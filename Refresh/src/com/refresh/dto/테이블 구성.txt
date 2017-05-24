@@ -1,0 +1,58 @@
+
+일반 회원 테이블( Investor )
+기업 회원 테이블( Business )
+펀딩 정보 테이블( Funding )
+펀딩 댓글 테이블( Fundreply )
+
+
+- 일반 회원 테이블( Investor )
+ 회원번호(inum)
+ 이름 (iname)
+ 이메일(idmail)
+ 비밀번호(ipass)
+ 전화번호(iphone)
+ 결제정보(ipay)
+
+
+- 기업 회원 테이블( Business )
+ 회사회원번호(bnum)
+ 회사명 (bname)
+ 비밀번호(bpass)
+ 대표자(ceoname)
+ 전화번호(btel)
+ 회사주소(baddr)
+ 회사번호(사업자등록) (idbnum)
+ 회사계좌정보(bacc)
+
+
+- 펀딩 정보 테이블( Funding )
+ 펀딩번호 (pnum)
+ 펀딩명 (pname)
+ 펀딩종류 (pu)
+ 카테고리 (category)
+ 회사명 (bname)
+ 대표자 (ceoname)
+ 작성일 (fdate)
+ 마감일 (deadline)
+ 내용 (fcontent)
+ 목표금액 (gmoney)
+ 현재모금액 (cmoney)
+ 펀딩상태 (state)
+
+※ 투자자 삭제, 달성률은 뷰에서 처리
+
+
+- 펀딩 댓글 테이블 ( Fundreply)
+ 댓글번호 (rnum)
+ 펀딩번호 (pnum)
+ 작성자 (rname)
+ 내용 (rcontent)
+ 작성일 (rdate)
+
+
+
+
+
+ 
+
+

@@ -4,11 +4,11 @@
        "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
        
 <tiles-definitions>
-    <definition name=".main" path="/0523/base.jsp">
-    	   	<put name="header" value="/0523/header.jsp"></put>
-    	   	<put name="menu" value="/0523/menu.jsp"></put>
-    	   	<put name="body" value="/0523/body.jsp"></put>
-    	   	<put name="footer" value="/0523/footer.jsp"></put>
+    <definition name=".main" path="">
+    	   	<put name="header" value=""></put>
+    	   	<put name="menu" value=""></put>
+    	   	<put name="body" value=""></put>
+    	   	<put name="footer" value=""></put>
     </definition>
     
 </tiles-definitions>
