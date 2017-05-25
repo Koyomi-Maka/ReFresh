@@ -15,20 +15,30 @@ public class Investor {
 	private String ipass;
 	private String iphone;
 	private String ipay;
+	private String ibank;
 	
 	public Investor() {
 	}
 
-	public Investor(int inum, String iname, String idmail, String ipass, String iphone, String ipay) {
+	public Investor(int inum, String iname, String idmail, String ipass, String iphone, String ipay,String ibank ) {
 		this.inum = inum;
 		this.iname = iname;
 		this.idmail = idmail;
 		this.ipass = ipass;
 		this.iphone = iphone;
 		this.ipay = ipay;
+		this.ibank = ibank;
 	}
 
 
+
+	public String getIbank() {
+		return ibank;
+	}
+
+	public void setIbank(String ibank) {
+		this.ibank = ibank;
+	}
 
 	public int getInum() {
 		return inum;

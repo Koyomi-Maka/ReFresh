@@ -12,6 +12,7 @@ create table investor
  ipass varchar2(20) not null,
  iphone varchar2(15),
  ipay varchar2(30) not null
+ ibank varchar2(30) not null
 )
 
 create table business
@@ -24,6 +25,7 @@ create table business
  baddr varchar2(30),
  idbnum number not null,
  bacc varchar2(30) not null
+ bbank varchar2(30) not null
 )
 
 create table funding
