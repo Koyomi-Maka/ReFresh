@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
-<sqlMap>
+<sqlMap namespace="fundreply">
 
+  <typeAlias alias="reply" type="refresh.dto.Reply"/>
+  
+  <insert id="insert" parameterClass="reply">
+     insert into guest (rnum,pname,rname,rcontent,rdate)
+                 values (reply_seq.nextval,#pname#,#rname#,#rcontent#,sysdate)
+  
+  </insert>
+  
+  <update id="update" parameterClass="reply">
+     update reply set pname=#pname#,rname=#rname#,rcontent=#rcontent# where rnum=#rnum#
+  </update>
 
+  <!-- 특정 댓글번호에 대한 삭제 -->
+  <delete id="delete" parameterClass="int">
+     delete from reply where rnum=#rnum#
+  </delete>
+
+  <select id="selectAll" resultClass="reply">
+     select rnum,rname,rcontent,rdate from reply
+     order by rnum desc
+  </select> 
+  
+  <!-- list에 출력할 데이터 조회 -->
+  <select id="select" parameterClass="int" resultClass="reply">
+     select pname,rname,rcontent from reply where rnum=#rnum#
+  </select>
+  
+    <!-- 1페이지당 댓글 출력(10건) -->
+  <select id="selectPage" resultClass="guest" parameterClass="java.util.Map"><![CDATA[
+     select rnum,pname,rname,rcontent,rdate 
+     from (select rnum,pname,rname,rcontent,rdate,rownum rn
+           from (select rnum,pname,rname,rcontent,rdate 
+                 from reply
+                 order by rnum desc)
+          )
+     where rn between #start# and #end#
+  
+  ]]></select>
+  
+  <select id="count" resultClass="int">
+     select count(*) from reply
+  </select>
+  
 </sqlMap>
+
+
