@@ -1,48 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
-<sqlMap namespace="fundreply">
-
+<sqlMap namespace="refresh">	
   <typeAlias alias="reply" type="refresh.dto.Reply"/>
+  <typeAlias alias="inves" type="refresh.dto.Investor"/>
   
-  <insert id="insert" parameterClass="reply">
-     insert into guest (rnum,pname,rname,rcontent,rdate)
-                 values (reply_seq.nextval,#pname#,#rname#,#rcontent#,sysdate)
-  
+  <insert id="invesInsert" parameterClass="inves">
+  	insert into investor (inum,idmail,ipass,iname,iphone,ibank,ipay)
+  				values (inves_seq.nextval,#idmail#,#ipass#,#iname#,#iphone#,#ibank#,#ipay#)
   </insert>
   
-  <update id="update" parameterClass="reply">
-     update reply set pname=#pname#,rname=#rname#,rcontent=#rcontent# where rnum=#rnum#
+  <update id="invesUpdate" parameterClass="inves">
+  	update investor set ipass=#ipass#,iphone=#iphone#,ibank=#ibank#,ipay=#ipay# where inum=#inum#
+  </update>
+  
+  <delete id="invesDelete" parameterClass="int">
+  	delete from investor where inum=#inum#
+  </delete>
+  
+  <select id="invesSelect" parameterClass="String" resultClass="inves">
+  	select * from investor where idmail=#idmail#
+  </select>
+  
+  <select id="invesSelectAll" resultClass="inves">
+    select * from investor
+  </select>
+  
+  
+  
+  <insert id="replyInsert" parameterClass="reply">
+     insert into fundreply (rnum,pname,rname,rcontent,rdate)
+                 values (reply_seq.nextval,#pname#,#rname#,#rcontent#,sysdate)
+  </insert>
+  
+  <update id="replyUpdate" parameterClass="reply">
+     update fundreply set rname=#rname#,rcontent=#rcontent# where rnum=#rnum#
   </update>
 
   <!-- 특정 댓글번호에 대한 삭제 -->
-  <delete id="delete" parameterClass="int">
-     delete from reply where rnum=#rnum#
+  <delete id="replyDelete" parameterClass="int">
+     delete from fundreply where rnum=#rnum#
   </delete>
 
-  <select id="selectAll" resultClass="reply">
-     select rnum,rname,rcontent,rdate from reply
+  <select id="replySelectAll" resultClass="reply">
+     select rnum,rname,rcontent,rdate from fundreply
      order by rnum desc
   </select> 
   
   <!-- list에 출력할 데이터 조회 -->
-  <select id="select" parameterClass="int" resultClass="reply">
-     select pname,rname,rcontent from reply where rnum=#rnum#
+  <select id="replySelect" parameterClass="int" resultClass="reply">
+     select pname,rname,rcontent from fundreply where rnum=#rnum#
   </select>
   
     <!-- 1페이지당 댓글 출력(10건) -->
-  <select id="selectPage" resultClass="guest" parameterClass="java.util.Map"><![CDATA[
+  <select id="replySelectPage" resultClass="guest" parameterClass="java.util.Map"><![CDATA[
      select rnum,pname,rname,rcontent,rdate 
      from (select rnum,pname,rname,rcontent,rdate,rownum rn
            from (select rnum,pname,rname,rcontent,rdate 
-                 from reply
+                 from fundreply
                  order by rnum desc)
           )
      where rn between #start# and #end#
-  
   ]]></select>
   
-  <select id="count" resultClass="int">
-     select count(*) from reply
+  <select id="replyCount" resultClass="int">
+     select count(*) from fundreply
   </select>
   
 </sqlMap>

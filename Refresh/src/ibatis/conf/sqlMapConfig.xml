@@ -23,6 +23,6 @@
   		</dataSource>
   </transactionManager>
   
-  <sqlMap resource="./ibatis/mapper/emp.xml"/>
+  <sqlMap resource="./ibatis/mapper/fundfive.xml"/>
   
 </sqlMapConfig>
