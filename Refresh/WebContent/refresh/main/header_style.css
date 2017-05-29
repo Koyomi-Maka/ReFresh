@@ -38,8 +38,8 @@
  bottom:30px;
  }
  
- A:link {text-decoration:none;color:black}
- A:visited {text-decoration:none; color:black}
+ .span A:link {text-decoration:none;color:black}
+ .span A:visited {text-decoration:none; color:black}
  .span A:hover {text-decoration:none; color:lightgrey}
  .a-hover:hover {text-decoration:none;color:#747474}
  
