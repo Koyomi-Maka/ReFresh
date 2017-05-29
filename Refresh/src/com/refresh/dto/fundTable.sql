@@ -7,12 +7,12 @@ drop table business
 create table investor
 (
  inum number primary key,
- iname varchar2(15) not null,
  idmail varchar2(30) unique,
  ipass varchar2(20) not null,
+ iname varchar2(15) not null,
  iphone varchar2(15),
- ipay varchar2(30) not null
  ibank varchar2(30) not null
+ ipay varchar2(30) not null
 )
 
 create table business
@@ -24,8 +24,8 @@ create table business
  btel varchar2(15),
  baddr varchar2(30),
  idbnum number not null,
- bacc varchar2(30) not null
  bbank varchar2(30) not null
+ bacc varchar2(30) not null
 )
 
 create table funding
@@ -52,3 +52,31 @@ create table fundreply
  rcontent varchar2(2000),
  rdate date
 )
+
+drop sequence inves_seq;
+create sequence inves_seq
+	start with 1
+	increment by 1
+	nocycle
+	nocache;
+	
+drop sequence busi_seq;
+create sequence busi_seq
+	start with 1
+	increment by 1
+	nocycle
+	nocache;
+	
+drop sequence fund_seq;
+create sequence fund_seq
+	start with 1
+	increment by 1
+	nocycle
+	nocache;
+	
+drop sequence reply_seq;
+create sequence reply_seq
+	start with 1
+	increment by 1
+	nocycle
+	nocache;

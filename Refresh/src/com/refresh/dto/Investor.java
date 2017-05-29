@@ -10,24 +10,24 @@ public class Investor {
 	결제정보
 	 		*/
 	private int inum;
-	private String iname;
 	private String idmail;
 	private String ipass;
+	private String iname;
 	private String iphone;
-	private String ipay;
 	private String ibank;
+	private String ipay;
 	
 	public Investor() {
 	}
 
-	public Investor(int inum, String iname, String idmail, String ipass, String iphone, String ipay,String ibank ) {
+	public Investor(int inum, String iname, String idmail, String ipass, String iphone, String ibank,String ipay ) {
 		this.inum = inum;
 		this.iname = iname;
 		this.idmail = idmail;
 		this.ipass = ipass;
 		this.iphone = iphone;
-		this.ipay = ipay;
 		this.ibank = ibank;
+		this.ipay = ipay;
 	}
 
 
