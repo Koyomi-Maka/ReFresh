@@ -13,7 +13,7 @@
 	<tr>
 		<td colspan="2" align="center">기업회원가입</td>
 	</tr>
-	<tr>
+	<tr>   
 		<td><input type="text" name="idbnum" value=${buis.idbnum} size=20 style="width: 250px; height: 45px" readonly></td>
 		
 	</tr>

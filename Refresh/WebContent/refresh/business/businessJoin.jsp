@@ -14,7 +14,7 @@
 		var telExp = /^[0-9]{11}
 		var accExp = /^[0-9]{15}
 		
-		var f=document.frm;
+		var f=document.frm;  
 		var idbnum = f.idbnum.value;
 		
 		if(idbnum ==''){

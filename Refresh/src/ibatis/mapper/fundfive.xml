@@ -22,7 +22,7 @@
 	
   <select id="businessSelecte" parameterClass="int" resultClass="busi">
 	select * from business where idbnum=#idbnum#
-  </select>
+  </select> 
   
   <select id="businessSelecteAll" resultClass="busi">
 	select * from business order by bnum
