@@ -21,7 +21,7 @@ public class ReplyDAO {//DB접근 전담클래스
 	public boolean insert(Reply reply){//댓글쓰기
 		
 		try {
-			sqlMap.insert("reply.insert",reply);
+			sqlMap.insert("reply.replyInsert",reply);
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -32,7 +32,7 @@ public class ReplyDAO {//DB접근 전담클래스
 	
 	public boolean update(Reply reply){//댓글수정
 		 try {
-			int t = sqlMap.update("reply.update",reply);//t: 수정된 행의 갯수
+			int t = sqlMap.update("reply.replyUpdate",reply);//t: 수정된 행의 갯수
 			 if(t==1)return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -43,7 +43,7 @@ public class ReplyDAO {//DB접근 전담클래스
 	
 	public boolean delete(int rnum){//특정 한행 삭제
 		try {
-			int t = sqlMap.delete("reply.delete",rnum);//t: 삭제된 행의 갯수
+			int t = sqlMap.delete("reply.replyDelete",rnum);//t: 삭제된 행의 갯수
 			  if(t==1)return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -58,7 +58,7 @@ public class ReplyDAO {//DB접근 전담클래스
 	   Reply reply=null;
 			
 		try {
-			reply = (Reply) sqlMap.queryForObject("reply.select",rnum);
+			reply = (Reply) sqlMap.queryForObject("reply.replySelect",rnum);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -70,7 +70,7 @@ public class ReplyDAO {//DB접근 전담클래스
 	    List<Reply> list=null;
 			
 		try {
-			list = sqlMap.queryForList("reply.selectAll");
+			list = sqlMap.queryForList("reply.replySelectAll");
 		} catch (SQLException e) {
 				e.printStackTrace();
 		}
@@ -99,7 +99,7 @@ public class ReplyDAO {//DB접근 전담클래스
  			   map.put("start", start);
  			   map.put("end", end);
  			   
- 			list = sqlMap.queryForList("reply.selectPage",map);
+ 			list = sqlMap.queryForList("reply.replySelectPage",map);
  		} catch (SQLException e) {
  			e.printStackTrace();
  		}	  
@@ -109,7 +109,7 @@ public class ReplyDAO {//DB접근 전담클래스
     public int selectCount(){
    	 int count=0;
    	try {
-			count = (Integer) sqlMap.queryForObject("reply.count");
+			count = (Integer) sqlMap.queryForObject("reply.replyCount");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

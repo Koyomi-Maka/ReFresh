@@ -28,12 +28,13 @@
   
   
   <insert id="replyInsert" parameterClass="reply">
-     insert into fundreply (rnum,pname,rname,rcontent,rdate)
-                 values (reply_seq.nextval,#pname#,#rname#,#rcontent#,sysdate)
+     insert into fundreply (rnum,pnum,rname,rcontent,rdate)
+                 values (reply_seq.nextval,#pnum#,#rname#,#rcontent#,sysdate)
   </insert>
   
   <update id="replyUpdate" parameterClass="reply">
      update fundreply set rname=#rname#,rcontent=#rcontent# where rnum=#rnum#
+     
   </update>
 
   <!-- 특정 댓글번호에 대한 삭제 -->
@@ -48,14 +49,14 @@
   
   <!-- list에 출력할 데이터 조회 -->
   <select id="replySelect" parameterClass="int" resultClass="reply">
-     select pname,rname,rcontent from fundreply where rnum=#rnum#
+     select pnum,rname,rcontent from fundreply where rnum=#rnum#
   </select>
   
     <!-- 1페이지당 댓글 출력(10건) -->
   <select id="replySelectPage" resultClass="guest" parameterClass="java.util.Map"><![CDATA[
-     select rnum,pname,rname,rcontent,rdate 
-     from (select rnum,pname,rname,rcontent,rdate,rownum rn
-           from (select rnum,pname,rname,rcontent,rdate 
+     select rnum,pnum,rname,rcontent,rdate 
+     from (select rnum,pnum,rname,rcontent,rdate,rownum rn
+           from (select rnum,pnum,rname,rcontent,rdate 
                  from fundreply
                  order by rnum desc)
           )
