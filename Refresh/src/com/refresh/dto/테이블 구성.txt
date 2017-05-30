@@ -37,9 +37,9 @@
  내용 (fcontent)
  목표금액 (gmoney)
  현재모금액 (cmoney)
+ 달성률 (rate)
  펀딩상태 (state)
 
-※ 투자자 삭제, 달성률은 뷰에서 처리
 
 
 - 펀딩 댓글 테이블 ( Fundreply)
