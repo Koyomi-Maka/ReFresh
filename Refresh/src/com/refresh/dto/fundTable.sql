@@ -11,7 +11,7 @@ create table investor
  ipass varchar2(20) not null,
  iname varchar2(15) not null,
  iphone varchar2(15),
- ibank varchar2(30) not null
+ ibank varchar2(30) not null,
  ipay varchar2(30) not null
 )
 
@@ -21,10 +21,9 @@ create table business
  bname varchar2(30) unique,
  bpass varchar2(20) not null,
  ceoname varchar2(15) not null,
+ idbnum number not null,
  btel varchar2(15),
  baddr varchar2(30),
- idbnum number not null,
- bbank varchar2(30) not null
  bacc varchar2(30) not null
 )
 
@@ -33,18 +32,19 @@ create table funding
  pnum number primary key,
  pname varchar2(30) not null,
  pu varchar2(20) not null,
+ state varchar2(15),
  category varchar2(20) not null,
  bname varchar2(30) references business (bname),
  ceoname varchar2(30),
- fdate date,
- deadline date,
- fcontent varchar2(2000),
  gmoney number not null,
  cmoney number,
- state varchar2(15)
+ rate number,
+ fcontent varchar2(2000),
+ fdate date,
+ deadline date
 )
 
-create table fundreply
+create table reply
 (
  rnum number primary key,
  pnum number references funding (pnum),
