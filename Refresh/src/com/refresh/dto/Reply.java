@@ -5,23 +5,24 @@ import java.sql.Date;
 public class Reply {
 /*	
 	댓글 번호
-  	펀딩명
+  	펀딩번호
 	작성자
 	내용
 	작성일
  			*/
 	private int rnum;
-	private String pname;
-	private String rname;
+	private int pnum;
+	private String rname; 
 	private String rcontent;
 	private Date rdate;
 	
 	public Reply() {
 	}
 
-	public Reply(int rnum, String pname, String rname, String rcontent, Date rdate) {
+	public Reply(int rnum, int pnum, String rname, String rcontent, Date rdate) {
+	
 		this.rnum = rnum;
-		this.pname = pname;
+		this.pnum = pnum;
 		this.rname = rname;
 		this.rcontent = rcontent;
 		this.rdate = rdate;
@@ -35,12 +36,12 @@ public class Reply {
 		this.rnum = rnum;
 	}
 
-	public String getPname() {
-		return pname;
+	public int getPnum() {
+		return pnum;
 	}
 
-	public void setPname(String pname) {
-		this.pname = pname;
+	public void setPnum(int pnum) {
+		this.pnum = pnum;
 	}
 
 	public String getRname() {
@@ -66,6 +67,9 @@ public class Reply {
 	public void setRdate(Date rdate) {
 		this.rdate = rdate;
 	}
+	
+	
+
 	
 	
 	
