@@ -97,7 +97,7 @@
 	<tr >
 		<td align="right">
 			<input type="reset" value="취소">
-			<input type="button" value="등록" onclick="">
+			<input type="button" value="등록" onclick="validCheck()">
          </td>
 	</tr>
 </table>

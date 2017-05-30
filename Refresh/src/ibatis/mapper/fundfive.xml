@@ -71,7 +71,7 @@
   <select id="replySelectAll" resultClass="reply">
      select rnum,rname,rcontent,rdate from fundreply
      order by rnum desc
-  </select> 
+  </select>   
   
   <!-- list에 출력할 데이터 조회 -->
   <select id="replySelect" parameterClass="int" resultClass="reply">
