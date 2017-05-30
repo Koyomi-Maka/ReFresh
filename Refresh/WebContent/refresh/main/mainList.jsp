@@ -7,10 +7,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="body_style.css">
+<link rel="stylesheet" href="/TomTest/fundtest/body_style.css">
+
 <title>FundFive</title>
+ <script type="text/javascript" src="../js/jquery3.jsp">
+ </script>
+ <script type="text/javascript">
+//스크롤할때마다 스크롤위치값을 쿠키저장하기
+  $(window).scroll(function(){
+  $.cookie("scroll", $(document).scrollTop() );
+  });
+
+  //문서로드 후 저장된 쿠키값 가져와서 스크롤위치 이동
+   $(document).ready(function(){
+  if ( $.cookie("scroll") !== null) {
+    $(document).scrollTop( $.cookie("scroll") );
+  }
+});
+ </script>
 </head>
- 
 <body>
  <div id="header"><jsp:include page="header.jsp"/></div>
  <!-- header -->
@@ -26,19 +41,36 @@
    </div>
    <div>
    <div class="w3-display-left w3-jumbo" style="margin-left:16px; margin-top:90px;">
-    <button class="w3-teal"><i class="fa fa-arrow-left"></i></button>
+    <button id="" class="w3-teal"><i class="fa fa-arrow-left"></i></button>
    </div>
    <div class="w3-display-right w3-jumbo" style="margin-right:16px; margin-top:90px;">
-    <button class="w3-teal"><i class="fa fa-arrow-right"></i></button>
+    <button id="" class="w3-teal"><i class="fa fa-arrow-right"></i></button>
    </div>
     <table width="100%" class="pages">
-    <tr><td class="page">펀딩 내용을 표시할 공간입니다</td>
-        <td class="page">펀딩 내용을 표시할 공간입니다</td>
-        <td class="page">펀딩 내용을 표시할 공간입니다</td></tr>
     <tr>
-    <td class="title">펀딩 제목을 표시할 공간입니다 </td>
-    <td class="title">펀딩 제목을 표시할 공간입니다</td>
-    <td class="title">펀딩 제목을 표시할 공간입니다</td>
+     <td id="title1" class="title">펀딩 제목을 표시할 공간입니다 </td>
+     <td id="title2" class="title">펀딩 제목을 표시할 공간입니다</td>
+     <td id="title3" class="title">펀딩 제목을 표시할 공간입니다</td>
+    </tr>
+    <tr>
+     <td id="gmoney1" class="list">목표금액</td>
+     <td id="gmoney2" class="list">목표금액</td>
+     <td id="gmoney3" class="list">목표금액</td>
+    </tr>
+    <tr>
+     <td id="cmoney1" class="list">현재금액</td>
+     <td id="cmoney2" class="list">현재금액</td>
+     <td id="cmoney3" class="list">현재금액</td>
+    </tr>
+    <tr>
+      <td id="rate1" class="list">달성률</td>
+      <td id="rate2" class="list">달성률</td>
+      <td id="rate3" class="list">달성률</td>
+    </tr>
+    <tr>
+      <td id="deadline1" class="list">종료일</td>
+      <td id="deadline2" class="list">종료일</td>
+      <td id="deadline3" class="list">종료일</td>
     </tr>
     </table>
    </div>
@@ -46,13 +78,13 @@
    <br>
    <center>
    <div id="navi">
-    <a href="#1">&laquo;</a>
-    <a href="#1">1</a>
-    <a href="#2">2</a>
-    <a href="#3">3</a>
-    <a href="#4">4</a>
-    <a href="#5">5</a>
-    <a href="#5">&raquo;</a>
+    <a href="">&laquo;</a>
+    <a href="">1</a>
+    <a href="">2</a>
+    <a href="">3</a>
+    <a href="">4</a>
+    <a href="">5</a>
+    <a href="">&raquo;</a>
    </div>
    </center>
   </div>

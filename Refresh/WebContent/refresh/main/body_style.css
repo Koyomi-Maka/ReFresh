@@ -25,17 +25,18 @@
   margin-top:12px;
   display:block;
   border:1px solid;
-  height:450px;
- }
- .page{
-  border:1px solid #ddd;
-  height:380px;
-  width:400px;
+  height:300px;
  }
  .title{
   border:1px solid #ddd;
+  width:400px;
   height:50px;
  }
+ .list{
+  border:1px solid #ddd;
+  height:55px;
+ }
+ 
  #guide{
   background-color: rgb(246,246,246);
   color: #483636;
@@ -56,6 +57,7 @@
   font-weight: bold;
  }
  #navi {
+  margin-top: 15px;
   display: inline-block;
  }
  
@@ -93,6 +95,6 @@
     text-decoration: none;
 }
  #menu li a:hover {
-    background-color: #333;
+    background-color: #111;
 }
  
