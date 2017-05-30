@@ -46,10 +46,10 @@ public class FundActionForm extends Action {
 		} else if (action.equals("insert")) { //입력요청
 			Reply reply = new Reply();
 			reply.setRnum(Integer.parseInt(request.getParameter("rnum")));//번호 //번호를 이렇게입력받으면 수정은 못하게..?
-			reply.setPname(request.getParameter("pname"));//펀딩명
+			//reply.setPname(request.getParameter("pname"));//펀딩명
 			reply.setRname(request.getParameter("rname"));;//작성자
 			reply.setRcontent(request.getParameter("rcontent"));//내용
-			reply.setRdate(request.getParameter("rdate"));//작성일
+			//reply.setRdate(request.getParameter("rdate"));//작성일
 		
 
 			if (rpdao.insert(reply)) {
@@ -62,10 +62,10 @@ public class FundActionForm extends Action {
 		} else if (action.equals("")) {//댓글수정요청
 			 Reply reply = new Reply();
 			 reply.setRnum(Integer.parseInt(request.getParameter("rnum")));//번호 //번호를 이렇게입력받으면 수정은 못하게..?
-				reply.setPname(request.getParameter("pname"));//펀딩명
+				//reply.setPname(request.getParameter("pname"));//펀딩명
 				reply.setRname(request.getParameter("rname"));;//작성자
 				reply.setRcontent(request.getParameter("rcontent"));//내용
-				reply.setRdate(request.getParameter("rdate"));//작성일   		         
+				//reply.setRdate(request.getParameter("rdate"));//작성일   		         
         
 	        if(rpdao.update(reply)){
 	        	request.setAttribute("msg", "댓글수정성공!!");
@@ -73,7 +73,7 @@ public class FundActionForm extends Action {
 	        	request.setAttribute("msg", "댓글수정실패!!");
 	        }
             forward = mapping.findForward("msg"); 
-		             break;
+		   //          break;
 		} else if (action.equals("delete")) {//댓글삭제요청
 
 		}
