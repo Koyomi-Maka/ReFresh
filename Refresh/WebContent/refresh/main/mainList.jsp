@@ -10,17 +10,19 @@
 <link rel="stylesheet" href="body_style.css">
 <title>FundFive</title>
 </head>
-
+ 
 <body>
  <div id="header"><jsp:include page="header.jsp"/></div>
  <!-- header -->
   <div id="main">
   
-   <div class="w3-bar w3-green" style="font-size:24px">
-    <div class="w3-bar-item w3-button">전체</div>
-    <div class="w3-bar-item w3-button">카테고리</div>
-    <div class="w3-bar-item w3-button">투자</div>
-    <div class="w3-bar-item w3-button">리워드</div>
+   <div id="menu" style="font-size:24px">
+    <ul>
+     <li><a href="">전체</a></li>
+     <li><a href="">카테고리</a></li>
+     <li><a href="">투자</a></li>
+     <li><a href="">리워드</a></li>
+    </ul>
    </div>
    <div>
    <div class="w3-display-left w3-jumbo" style="margin-left:16px; margin-top:90px;">
@@ -42,18 +44,18 @@
    </div>
   
    <br>
-   <div class="w3-center">
-   <div class="w3-bar w3-border">
-    <a href="#1" class="w3-bar-item w3-button">&laquo;</a>
-    <a href="#1" class="w3-bar-item w3-button">1</a>
-    <a href="#2" class="w3-bar-item w3-button">2</a>
-    <a href="#3" class="w3-bar-item w3-button">3</a>
-    <a href="#4" class="w3-bar-item w3-button">4</a>
-    <a href="#5" class="w3-bar-item w3-button">5</a>
-    <a href="#5" class="w3-bar-item w3-button">&raquo;</a>
+   <center>
+   <div id="navi">
+    <a href="#1">&laquo;</a>
+    <a href="#1">1</a>
+    <a href="#2">2</a>
+    <a href="#3">3</a>
+    <a href="#4">4</a>
+    <a href="#5">5</a>
+    <a href="#5">&raquo;</a>
    </div>
+   </center>
   </div>
- </div>
  <!-- main -->
  <div id="guide">
  <a name="guide"></a>

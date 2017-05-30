@@ -44,18 +44,55 @@
   margin-right:120px;
   margin-bottom:200px;
  }
-
- ul li {
+ #guide ul li {
   list-style:none;
   font-size:14px;
   padding-right:90px;
  }
- 
- p {
+ #guide p {
   border-left-color : red;
   border-left-style : solid;
   font-size:26px;
   font-weight: bold;
  }
+ #navi {
+  display: inline-block;
+ }
  
+ #navi a {
+    border:1px solid #ddd;
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background-color .3s;
+ }
+ #navi a.active {
+    background-color: #4CAF50;
+    color: white;
+ }
+ #navi a:hover:not(.active) { background-color: #ddd;}
+ 
+ #menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #4CAF50;
+}
+ #menu li {
+    float: left;
+}
+ #menu a {
+    disaply-style: none;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+ #menu li a:hover {
+    background-color: #333;
+}
  
