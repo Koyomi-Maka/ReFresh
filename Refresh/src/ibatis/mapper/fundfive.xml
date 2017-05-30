@@ -78,7 +78,7 @@
      select pname,rname,rcontent from fundreply where rnum=#rnum#
   </select>
   
-    <!-- 1페이지당 댓글 출력(10건) -->
+    <!-- 1페이지당 댓글 출력(10건) --> 
   <select id="replySelectPage" resultClass="guest" parameterClass="java.util.Map"><![CDATA[
      select rnum,pname,rname,rcontent,rdate 
      from (select rnum,pname,rname,rcontent,rdate,rownum rn

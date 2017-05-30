@@ -83,7 +83,7 @@
 	</tr>
 	<tr>
 		<td>
-			<select style="height: 40px; width: 80px">
+			<select style="height: 40px; width: 80px"> 
 				<option >선택</option>
 				<option>국민은행</option>
 				<option>신한은행</option>

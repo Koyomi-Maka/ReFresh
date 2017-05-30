@@ -43,7 +43,7 @@ public class BusinessDAO {
 		return false;
 	}
 	public Business select(int idbnum){
-		Business busi = null;  
+		Business busi = null;   
 		try {
 			busi = (Business)sqlMap.queryForList("busi.businessSelect", idbnum);
 		} catch (SQLException e) {
