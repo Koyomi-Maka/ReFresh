@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <script type="text/javascript" scr=""></script>
 <script type="text/javascript">
-
+ 
 	function validCheck(){
 		var idbnumExp = /^[0-9]{10};
 		var passExp = /^[a-z0-9]{6,15}

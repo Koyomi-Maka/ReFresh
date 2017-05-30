@@ -4,7 +4,7 @@
   <typeAlias alias="reply" type="refresh.dto.Reply"/>
   <typeAlias alias="inves" type="refresh.dto.Investor"/>
   <typeAlias alias="busi" type="refresh.dto.Business"/>
-  
+   
 <!-- Business -->
   <insert id="businessInsert" parameterClass="busi">
 		insert into business (bnum, bname, bpass, ceoname, btel, baddr, idbum, bacc)
