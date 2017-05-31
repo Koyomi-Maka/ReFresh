@@ -23,11 +23,7 @@
 	    		location.href="join.do";
 	    	}
     	}
-    	/* if(page=='login'){
-    		location.href="/Refresh/login/login.do";
-    	}else if(page=='join'){
-    		location.href="join.do";
-    	} */
+    
      }
     
     function nullCheck(){// 널값
