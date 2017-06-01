@@ -35,7 +35,7 @@
 									<!-- DB에 저장된 개인정보list받아오기 -->
 									<td>${investor.inum }</td>
 									<td>${investor.iname}</td>
-									<td>${investor.idmail }</td>
+									<td><a href="/Refresh/fund?action=investoredit&rnum=${inverstor.inum }">${investor.idmail }</a></td>
 								</tr>
 							</c:forEach>
 						</table>
@@ -47,18 +47,18 @@
 						<table border="1" cellpadding="5">
 							<tr class="td">
 								<th width="50">번호</th>
-								<th width="60">작성자</th>
-								<th width="60">작성일</th>
-								<th width="150">펀딩제목</th>
+								<th width="100">펀딩명</th>
+								<th width="60">등록일</th>
+								<th width="60">달성률</th>
 							</tr>
 
-							<c:forEach items="${list }" var="guest">
+							<c:forEach items="${funding_list }" var="funding">
 								<tr>
-									<td>${guest.id }</td>
-									<td>${guest.name }</td>
-									<td>${guest.gdate }</td>
+									<td>${funding.pnum }</td>
+									<td>${funding.pname }</td>
+									<td>${funding.fdate }</td>
 									<td><a
-										href="/TomTest/guest/control?action=edit&id=${guest.id }">${guest.contents }</a></td>
+										href="/TomTest/guest/control?action=fundingedit&id=${funding.pnum }">${funding.rate }</a></td>
 								</tr>
 							</c:forEach>
 						</table>
@@ -81,7 +81,7 @@
 									<td>${reply.rname }</td>
 									<td>${reply.rdate }</td>
 									<td><a
-										href="/Refresh/fund?action=edit&rnum=${reply.rnum }">${reply.rcontent }</a></td>
+										href="/Refresh/fund?action=replyedit&rnum=${reply.rnum }">${reply.rcontent }</a></td>
 								</tr>
 							</c:forEach>
 						</table>
@@ -95,14 +95,13 @@
 							<tr class="td">
 								<th width="50">번호</th>
 								<th width="80">기업회원</th>
-								<th width="80">email</th>
+								<th width="80">회사번호</th>
 							</tr>
-							<c:forEach items="${list }" var="guest">
+							<c:forEach items="${business_list }" var="business">
 								<tr>
-									<td>${investor.inum }</td>
-									<td>${investor.iname}</td>
-									<td><a
-										href="/TomTest/guest/control?action=edit&id=${guest.id }">${guest.contents }</a></td>
+									<td>${business.bnum }</td>
+									<td>${business.bname}</td>
+									<td><a href="/Refresh/fund?action=businessedit&id=${business.bnum }">${investor.btel }</a></td>
 								</tr>
 							</c:forEach>
 						</table>
