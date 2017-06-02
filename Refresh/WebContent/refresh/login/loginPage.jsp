@@ -7,7 +7,7 @@
 <title>로그인폼</title>
   <script type="text/javascript">
     function movePage(page){
-    	
+    	     
     	var flag=false;
     	
     	if(page=='login1')
@@ -16,12 +16,12 @@
     		flag=nullCheck2();
     	
     	if(!flag){
-	    	document.frm.action='/Refresh/login/login.do?login='+page;//?login=login1
-	    	document.frm.submit();
-	    	
-	    	if(page=='join'){
-	    		location.href="join.do";
-	    	}
+  	    	document.frm.action='/Refresh/login/login.do?login='+page;//?login=login1
+  	    	document.frm.submit();
+  	    	
+  	    	if(page=='join'){
+  	    		location.href="join.do";
+  	    	}
     	}
     
      }
@@ -30,21 +30,27 @@
         var idmail = document.getElementById("idmail").value;
         var ipass = document.getElementById("ipass").value;
         if(idmail==null||idmail==''||ipass==null||ipass==''){
-			alert('아이디 또는 비밀번호를 입력해주세요');
-			return true;
-		}
+  			alert('아이디 또는 비밀번호를 입력해주세요');
+  			return true;
+  		}
         return false;
     }
     function nullCheck2(){
     	var idbnum = document.getElementById("idbnum").value;
         var bpass = document.getElementById("bpass").value;
         if(idbnum==null||idbnum==''||bpass==null||bpass==''){
-			alert('아이디 또는 비밀번호를 입력해주세요');
-			return true;
-		}
-    	return false;
-    }
-    
+  			alert('아이디 또는 비밀번호를 입력해주세요');
+  			return true;
+  		}
+        var vlaue=document.frm.idbnum.value;
+       if(isNaN('value')){//기업회원 로그인 아이디에 숫자가 아닌 다른 문자를 입력했을 때
+        	alert('아이디에 숫자만 입력해주세요');
+          document.frm.idbnum.value="";
+          document.frm.idbnum.focus();
+          return true;
+        }
+            	return false;
+            }
     
     
     function check(){
@@ -53,7 +59,7 @@
     function confCheck(){
         location.href="/Refresh/refresh/mypage/adminPage.jsp";
     }
-
+  
   </script>
 <!-- loginPage.jsp -->
 </head>
@@ -85,7 +91,7 @@
 		  </tr>
 		  <tr>
 		       <td align="right">
-		       <input align="right" type="button" value="로그인"  onclick="movePage('login1')"/><br>
+		       <input align="right" type="button" value="로그인" onclick="movePage('login1')"/><br>
 		       <input align="right" type="button" value="회원가입 하기" onclick="movePage('join')" /> 
 		       
 		       </td>
