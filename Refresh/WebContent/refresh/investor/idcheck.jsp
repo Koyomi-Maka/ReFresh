@@ -8,7 +8,6 @@
 <title>Insert title here</title>
   <script type="text/javascript">
   
-  
       function idcheck(useid){
     	 if(fomatcheck(useid)){
     	  	  opener.document.getElementById("idmail").value=useid;

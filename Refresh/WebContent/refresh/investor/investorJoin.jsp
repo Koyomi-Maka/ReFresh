@@ -71,7 +71,6 @@
 		}
 	}
 	
-	
     function idvaCheck(){
    		window.open('idcheck.jsp','confirm','width=330,height=150');
     }

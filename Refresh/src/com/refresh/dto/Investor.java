@@ -87,5 +87,4 @@ public class Investor {
 	public void setIpay(String ipay) {
 		this.ipay = ipay;
 	}
-	
 }
