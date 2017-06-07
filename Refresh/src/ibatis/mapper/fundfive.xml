@@ -13,13 +13,9 @@
   </insert>
   
   <update id="businessUpdate" parameterClass="busi">
-<<<<<<< HEAD
+
     update business set bpass=#bpass#, bname=#bname#, ceoname=#ceoname#, 
     btel=#btel#, baddr=#baddr#, bacc=#bacc#) 
-=======
-    update business set bpass=#bpass#, bname=#bname#, ceoname=#ceoname#, btel=#btel#, baddr=#baddr#, 
-				    	bbank=#bbank#, bacc=#bacc# ) 
->>>>>>> branch 'master' of https://github.com/Koyomi-Maka/ReFresh.git
   </update>
 	
   <delete id="businessDelete" parameterClass="int">
