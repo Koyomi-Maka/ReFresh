@@ -25,6 +25,19 @@ public class InvestorDAO {
 			}
 		return false;
 	}
+	public boolean invesIdcheck(String idmail) {
+		try {
+			int i = (int)sqlMap.queryForObject("refresh.invesIdcheck",idmail);
+			if(i>0){
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
 	
 	public Investor invesSelect(String idmail) {
 		Investor inves = null;

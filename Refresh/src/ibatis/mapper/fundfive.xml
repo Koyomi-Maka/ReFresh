@@ -48,6 +48,10 @@
   	delete from investor where inum=#inum#
   </delete>
   
+  <select id="invesIdcheck" parameterClass="String" resultClass="int">
+  	select count(*) from investor where idmail=#idmail#
+  </select>
+
   <select id="invesSelect" parameterClass="String" resultClass="inves">
   	select * from investor where idmail=#idmail#
   </select>

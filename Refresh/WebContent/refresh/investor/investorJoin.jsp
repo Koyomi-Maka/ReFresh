@@ -5,8 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript">
+
+    
+		
 	function idCheck(){
-		var id = document.getElementById("idname").value;
+		var id = document.getElementById("idmail").value;
 		if(id!=null&&id!=''){
 			document.getElementById("idmail_st").innerHTML ='<font color="green"><small>Check!!</small></font>';
 		}else{
@@ -15,13 +18,21 @@
 	}
 	function passCheck(){
 		idCheck();
+		var valpass = /^[A-Za-z0-9]{8,15}$/g;        
+
+
+
 		var pass = document.getElementById("ipass").value;
 		var passck = document.getElementById("ipassck").value;
 		if(pass==null||pass==''){
 			document.getElementById("pass_st").innerHTML ='<font color="red"><small>비밀번호를 입력하세요!!</small></font>';
 		}else{
 			if(pass==passck){
-				document.getElementById("pass_st").innerHTML ='<font color="green"><small>Check!!</small></font>';
+				if(valpass.test(pass)){	
+					document.getElementById("pass_st").innerHTML ='<font color="green"><small>Check!!</small></font>';
+				}else{
+					document.getElementById("pass_st").innerHTML ='<font color="red"><small>비밀번호 보안취약!!</small></font>';					
+				}
 			}else{
 				document.getElementById("pass_st").innerHTML ='<font color="red"><small>비밀번호 불일치!!</small></font>';
 			}
@@ -41,14 +52,28 @@
 		nameCheck();
 		var phone = document.getElementById("iphone").value;
 		if(phone!=null&&phone!=''){
-			document.getElementById("iphone_st").innerHTML ='<font color="green"><small>Check!!</small></font>';
+				document.getElementById("iphone_st").innerHTML ='<font color="green"><small>Check!!</small></font>';		
 		}else{
 			document.getElementById("iphone_st").innerHTML ='<font color="red"><small>전화번호를 입력해주세요!!</small></font>';
 		}
 	}
 	function payCheck(){
-		
+		phoneCheck();
+		var bank = document.getElementById("ibank").value;
+		var pay = document.getElementById("ipay").value;
+		if(bank == 'bank'){
+			document.getElementById("ipay_st").innerHTML ='<font color="red"><small>은행을 선택해주세요!!</small></font>';			
+		}else if(pay!=null&&pay!=''){
+				document.getElementById("ipay_st").innerHTML ='<font color="green"><small>Check!!</small></font>';		
+		}else{
+			document.getElementById("ipay_st").innerHTML ='<font color="red"><small>계좌번호를 입력해주세요!!</small></font>';
+		}
 	}
+	
+	
+    function idvaCheck(){
+   		window.open('idcheck.jsp','confirm','width=330,height=150');
+    }
 	
 </script>
 </head>
@@ -62,8 +87,8 @@
       <table bgcolor="#ffffff"  width="360" border="0" align="center" cellpadding="5" cellspacing="6">
        <tbody>
         <tr>
-         <td><input type="text" name="idname" id="idname" placeholder="이메일"  maxlength="30" readonly  style="width: 260px;height:30px  ">
-             <input type="button" value="중복확인" style="width: 65px; "></td>
+         <td><input type="text" name="idmail" id="idmail" placeholder="이메일"  maxlength="30" readonly  style="width: 260px;height:30px"></td>
+         <td><input type="button" onclick="idvaCheck()" value="중복확인" style="width: 65px; "></td>
         </tr>
         <tr>
 			<td style="width: 260px;height:10px" ><div id="idmail_st"><small>이메일 확인</small></div></td>
@@ -97,10 +122,10 @@
 			<td style="width: 260px;height:10px"><div id="iname_st"><small>이름 확인</small></div></td>
         </tr>
       <tr>
-       <td><input type="tel" placeholder="전화번호" id="iphone" onfocus="phoneCheck()" onkeyup="phoneCheck()" maxlength="11" style="width: 260px;height:30px"></td>
+       <td><input type="text" placeholder="전화번호" id="iphone" onfocus="phoneCheck()" onkeyup="phoneCheck()" maxlength="11" style="width: 260px;height:30px"></td>
       </tr>
         <tr>
-			<td><div id="iphone_st"><small>전화번호 확인</small></div></td>
+			<td style="width: 260px;height:10px"><div id="iphone_st"><small>전화번호 확인</small></div></td>
         </tr>
      </tbody>
     </table>
@@ -114,16 +139,16 @@
        <tbody>
         <tr>
          <td align="center" valign="middle"> 
-          <select style="width: 100px;height:30px">
-           <option>=은행=</option>
-           <option>국민은행</option>
-           <option>신한은행</option>
-           <option>하나은행</option>
-           <option>우리은행</option>
-           <option>우체국</option>
-           <option>농협</option>
+          <select id="ibank" name="ibank" onchange="payCheck()" style="width: 100px;height:30px">
+           <option value="bank">=은행=</option>
+           <option value="kb">국민은행</option>
+           <option value="sh">신한은행</option>
+           <option value="hn">하나은행</option>
+           <option value="wr">우리은행</option>
+           <option value="po">우체국</option>
+           <option value="nh">농협</option>
           </select></td>
-         <td align="center" valign="middle" ><input type="text" placeholder="계좌번호"  style="width: 220px;height:30px" ></td>
+         <td align="center" valign="middle" ><input name="ipay" id="ipay" type="text" placeholder="계좌번호" onkeyup="payCheck()" style="width: 220px;height:30px" ></td>
         </tr>
         <tr>
 			<td style="width: 260px;height:10px"><div id="ipay_st"><small>결제정보 확인</small></div></td>
@@ -139,7 +164,7 @@
       <table bgcolor="#ffffff" width="360" border="0" align="center" cellpadding="5" cellspacing="6">
        <tbody>
          <tr>
-         <td align="center" valign="middle"><input type="submit" value="가입"></td>
+         <td align="center" valign="middle"><input type="button" value="가입"></td>
          <td align="center" valign="middle"><input type="reset" value="취소" onclick="history.back()"></td>
     	</tr>
   	   </tbody>
