@@ -88,5 +88,4 @@ public class Investor {
 		this.ipay = ipay;
 	}
 	
-	
 }

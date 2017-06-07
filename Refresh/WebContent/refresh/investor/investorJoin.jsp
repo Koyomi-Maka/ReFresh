@@ -46,6 +46,7 @@
 		}else{
 			document.getElementById("iname_st").innerHTML ='<font color="red"><small>이름을 입력해주세요!!</small></font>';
 		}
+	
 		
 	}
 	function phoneCheck(){
