@@ -1,90 +1,103 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/TomTest/fundtest/body_style.css">
+<link rel="stylesheet" href="/Refresh/refresh/main/body_style.css">
 
 <title>FundFive</title>
- <script type="text/javascript" src="../js/jquery3.jsp">
- </script>
- <script type="text/javascript">
-//스크롤할때마다 스크롤위치값을 쿠키저장하기
-  $(window).scroll(function(){
-  $.cookie("scroll", $(document).scrollTop() );
-  });
 
-  //문서로드 후 저장된 쿠키값 가져와서 스크롤위치 이동
-   $(document).ready(function(){
-  if ( $.cookie("scroll") !== null) {
-    $(document).scrollTop( $.cookie("scroll") );
-  }
-});
- </script>
 </head>
 <body>
- <div id="header"><jsp:include page="header.jsp"/></div>
+ <div id="header"><jsp:include page="/refresh/main/header.jsp"/></div>
  <!-- header -->
   <div id="main">
-  
-   <div id="menu" style="font-size:24px">
-    <ul>
-     <li><a href="">전체</a></li>
-     <li><a href="">카테고리</a></li>
-     <li><a href="">투자</a></li>
-     <li><a href="">리워드</a></li>
-    </ul>
-   </div>
+   <div class="container">
+      <a href="/Refresh/refresh?action=main&sort=close" style="font-size:24px;">마감 직전 프로젝트</a>
+      <a href="/Refresh/refresh?action=main&sort=ended" style="font-size:24px;">종료된 프로젝트</a>
+     <!-- 진행 상태 -->
+    <div class="dropdown">
+     <button class="dropbtn">카테고리</button>
+      <div class="dropdown-content">
+       <a href="/Refresh/refresh?action=main&sort=all&page=1">전체</a>
+       <a href="">카테고리1</a>
+       <a href="">카테고리2</a>
+       <a href="">카테고리3</a>
+      </div>
+     </div> <!-- 카테고리 -->
+    <span style="color:#eeeeee; font-size:24px; 
+          padding-right: 14px; float:right;">${page } Page</span> 
+   </div> 
+  <!-- 메뉴 종료 -->
    <div>
    <div class="w3-display-left w3-jumbo" style="margin-left:16px; margin-top:90px;">
-    <button id="" class="w3-teal"><i class="fa fa-arrow-left"></i></button>
+    <c:if test="${page!=1 }">
+     <a href="/Refresh/refresh?action=main&sort=${sort }&page=${page-1}">
+      <button id="left" class="w3-teal"><i class="fa fa-arrow-left"></i></button>
+     </a>
+   </c:if>
    </div>
    <div class="w3-display-right w3-jumbo" style="margin-right:16px; margin-top:90px;">
-    <button id="" class="w3-teal"><i class="fa fa-arrow-right"></i></button>
+   <c:if test="${page!= totalPage}">
+     <a href="/Refresh/refresh?action=main&sort=${sort }&page=${page+1}">
+      <button id="right" class="w3-teal"><i class="fa fa-arrow-right"></i></button>
+     </a>
+   </c:if>
    </div>
     <table width="100%" class="pages">
     <tr>
-     <td id="title1" class="title">펀딩 제목을 표시할 공간입니다 </td>
-     <td id="title2" class="title">펀딩 제목을 표시할 공간입니다</td>
-     <td id="title3" class="title">펀딩 제목을 표시할 공간입니다</td>
+    <c:forEach var="i" items="${list }" varStatus="stat">
+     <td colspan="2" id="title${stat.count }" class="title">${i.pname }</td>
+    </c:forEach>
     </tr>
     <tr>
-     <td id="gmoney1" class="list">목표금액</td>
-     <td id="gmoney2" class="list">목표금액</td>
-     <td id="gmoney3" class="list">목표금액</td>
+    <c:forEach var="i" items="${list }" varStatus="stat">
+     <td colspan="2" id="gmoney${stat.count }" class="list">목표금액 : ${i.gmoney }원</td>
+    </c:forEach>
     </tr>
     <tr>
-     <td id="cmoney1" class="list">현재금액</td>
-     <td id="cmoney2" class="list">현재금액</td>
-     <td id="cmoney3" class="list">현재금액</td>
+    <c:forEach var="i" items="${list }" varStatus="stat">
+     <td colspan="2" id="cmoney${stat.count }" class="list">총 후원액 : ${i.cmoney }원</td>
+    </c:forEach>
     </tr>
     <tr>
-      <td id="rate1" class="list">달성률</td>
-      <td id="rate2" class="list">달성률</td>
-      <td id="rate3" class="list">달성률</td>
+     <c:forEach var="i" items="${list }" varStatus="stat">
+      <td colspan="2" id="rate${stat.count }" class="list">
+                달성률 : ${i.rate }%
+      </td>
+     </c:forEach>
     </tr>
     <tr>
-      <td id="deadline1" class="list">종료일</td>
-      <td id="deadline2" class="list">종료일</td>
-      <td id="deadline3" class="list">종료일</td>
+     <c:forEach var="i" items="${list }" varStatus="stat">
+      <td id="deadline${stat.count }" class="list">종료일 : ${i.deadline }</td>
+      <td style="text-align:center;">진행 중/종료(state)</td>
+     </c:forEach>
     </tr>
     </table>
    </div>
-  
+   
    <br>
    <center>
    <div id="navi">
-    <a href="">&laquo;</a>
-    <a href="">1</a>
-    <a href="">2</a>
-    <a href="">3</a>
-    <a href="">4</a>
-    <a href="">5</a>
-    <a href="">&raquo;</a>
+   <c:if test="${startPage!=1 }">
+    <a href="/Refresh/refresh?action=main&sort=${sort }&page=${startPage-5}">&laquo;</a>
+   </c:if>
+    <c:forEach var="i" begin="${startPage }" end="${endPage }">
+     <c:if test="${page == i}">
+      <span class="now">${i }</span>
+     </c:if>
+     <c:if test="${page!=i}">
+      <a href="/Refresh/refresh?action=main&sort=${sort }&page=${i}">${i }</a>
+     </c:if>
+    </c:forEach>
+    <c:if test="${endPage < totalPage}">
+     <a href="/Refresh/refresh?action=main&sort=${sort }&page=${endPage+1}">&raquo;</a>
+    </c:if>
    </div>
    </center>
   </div>

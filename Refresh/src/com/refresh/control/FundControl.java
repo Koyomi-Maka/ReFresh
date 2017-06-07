@@ -25,7 +25,7 @@ public class FundControl extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
 
-		if (action.equals("admin")) { // 관리자페이지에 댓글,회원관리,기업관리,게시물보이기
+		if(action.equals("admin")) { // 관리자페이지에 댓글,회원관리,기업관리,게시물보이기
 
 			ReplyDAO rdao = new ReplyDAO();
 			List<Reply> reply_list = rdao.selectAll();
@@ -85,6 +85,78 @@ public class FundControl extends HttpServlet {
 			   resp.getWriter().print("삭제실패");
 		   }
 		   
+    }else if(action.equals("main")){ //메인페이지
+    	String pageStr = req.getParameter("page");
+				
+		int page;
+		if(pageStr==null){
+			page = 1;
+		}else{
+			page = Integer.parseInt(pageStr);
+		}
+				/*
+				 한페이지(한 화면)에 보여질 레코드 수 : currRecord
+				 전체 레코드 수 : totalRecord
+				 한 화면에 보여질 페이지 수 : currPage
+				 전체 페이지 수 : totalPage
+				 */
+		FundingDAO dao = new FundingDAO();
+		String sort = req.getParameter("sort");
+		if(sort==null){
+			sort = "all";
+			}
+		int recordCount = 3; //한 페이지에 보일 게시물 갯수
+		int currPage = 5; //보일 페이지 갯수
+				
+		int totalRecord = 0; //총 게시물 갯수
+		if(sort.equals("all")){
+			totalRecord = dao.selectTotal();
+		}else if(sort.equals("ended")){
+			totalRecord = dao.selectEndedTotal();
+		}else if(sort.equals("close")){
+			totalRecord = dao.selectCloseTotal();
+		}
+				
+		int totalPage =  1;
+		int startPage = 1;
+		int endPage = 1;
+		//게시물이 0개일 경우 기본값
+		if(totalRecord!=0){	
+			totalPage = 0; //총 페이지 갯수
+			startPage = ((page-1)/currPage*currPage)+1; 
+			// 시작블럭숫자 (1~5페이지일경우 1, 6~10일경우 6) 
+			endPage = ((page-1)/currPage*currPage)+currPage; 
+			// 끝 블럭 숫자 (1~5일 경우 5, 6~10일경우 10
+			totalPage = (int)Math.ceil(totalRecord/(double)recordCount);
+			if(endPage > totalPage) {
+				endPage = totalPage;
+				}
+			}
+
+			//DB에서 검색
+			List<Funding> list = null;
+			if(sort.equals("all")){
+				list = dao.selectPageAll(page,recordCount);
+			}else if(sort.equals("ended")){
+				list = dao.selectEnded(page, recordCount);
+			}else if(sort.equals("close")){
+				list = dao.selectClose(page, recordCount);
+			}
+				
+			if(list!=null){
+				for(int i=0; i<list.size(); i++){
+					req.setAttribute("sort", sort);
+					req.setAttribute("list", list);
+					req.setAttribute("page", page);
+					req.setAttribute("startPage", startPage);
+					req.setAttribute("endPage", endPage);
+					req.setAttribute("totalPage", totalPage);
+					}//for
+				}//if
+			req.getRequestDispatcher("/refresh/main/mainList.jsp")
+			.forward(req, resp);
+			}//main화면
+		   
 //////////////////////////////////////개인회원///////////////////////////////////////////
 		   
 /*	   }else if(action.equals("replyedit")){//개인수정폼요청
@@ -122,6 +194,5 @@ public class FundControl extends HttpServlet {
 			   resp.getWriter().print("삭제실패");
 		   }
 	   }*/
-
-}// service
-}}
+		}// service
+}

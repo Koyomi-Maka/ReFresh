@@ -13,7 +13,7 @@ create table investor
  iphone varchar2(15),
  ibank varchar2(30) not null,
  ipay varchar2(30) not null
-)
+);
 
 create table business
 (
@@ -25,7 +25,7 @@ create table business
  btel varchar2(15),
  baddr varchar2(30),
  bacc varchar2(30) not null
-)
+);
 
 create table funding
 (
@@ -42,7 +42,7 @@ create table funding
  fcontent varchar2(2000),
  fdate date,
  deadline date
-)
+);
 
 create table reply
 (
@@ -51,7 +51,7 @@ create table reply
  rname varchar2(15),
  rcontent varchar2(2000),
  rdate date
-)
+);
 
 drop sequence inves_seq;
 create sequence inves_seq

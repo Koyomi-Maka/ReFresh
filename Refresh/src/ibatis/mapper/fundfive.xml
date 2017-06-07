@@ -4,6 +4,7 @@
   <typeAlias alias="reply" type="com.refresh.dto.Reply"/>
   <typeAlias alias="inves" type="com.refresh.dto.Investor"/>
   <typeAlias alias="busi" type="com.refresh.dto.Business"/>
+  <typeAlias alias="fund" type="com.refresh.dto.Funding"/>
    
 <!-- Business -->
   <insert id="businessInsert" parameterClass="busi">
@@ -12,8 +13,8 @@
   </insert>
   
   <update id="businessUpdate" parameterClass="busi">
-    update business set bpass=#bpass#, bname=#bname#, ceoname=#ceoname#, btel=#btel#, baddr=#baddr#, 
-				    	bbank=#bbank#, bacc=#bacc#) 
+    update business set bpass=#bpass#, bname=#bname#, ceoname=#ceoname#, 
+    btel=#btel#, baddr=#baddr#, bacc=#bacc#) 
   </update>
 	
   <delete id="businessDelete" parameterClass="int">
@@ -94,6 +95,64 @@
      select count(*) from reply
   </select>
   
+  <!-- Main -->
+  <!-- 페이지 출력(10건) -->
+ <select id="selectPageAll" resultClass="fund" parameterClass="java.util.Map">
+ <![CDATA[
+  select pname,gmoney,cmoney,rate,deadline
+  from (select pname,gmoney,cmoney,rate,deadline,rownum rn
+   from (select pname,gmoney,cmoney,rate,deadline
+        from funding
+        order by pname desc)
+        )
+  where rn between #start# and #end#
+  ]]>
+ </select>
+ 
+ <!-- 총 게시물 갯수 -->
+ <select id="selectTotal" resultClass="int">
+  select count(*) from funding
+ </select>
+ 
+ <!-- 종료된 프로젝트 -->
+ <select id="selectEnded" resultClass="fund" parameterClass="java.util.Map">
+ <![CDATA[
+  select pname,gmoney,cmoney,rate,deadline
+  from (select pname,gmoney,cmoney,rate,deadline,rownum rn
+   from (select pname,gmoney,cmoney,rate,deadline
+        from funding
+        where (sysdate-deadline) >= 0)
+        )
+  where rn between #start# and #end#
+  ]]>
+ </select>
+ 
+ <select id="selectEndedTotal" resultClass="int">
+ <![CDATA[
+  select count(*) from funding
+  where (sysdate-deadline) >= 0
+  ]]>
+ </select>
+ 
+ <!-- 마감 직전 프로젝트 -->
+ <select id="selectClose" resultClass="fund" parameterClass="java.util.Map">
+ <![CDATA[
+  select pname,gmoney,cmoney,rate,deadline
+  from (select pname,gmoney,cmoney,rate,deadline,rownum rn
+   from (select pname,gmoney,cmoney,rate,deadline
+        from funding
+        where (sysdate-deadline) < 0 and (sysdate-deadline) >= -1)
+        )
+  where rn between #start# and #end#
+  ]]>
+ </select>
+ 
+ <select id="selectCloseTotal" resultClass="int">
+ <![CDATA[
+  select count(*) from funding
+  where (sysdate-deadline) < 0 and (sysdate-deadline) >= -1
+ ]]>
+ </select>
+  
 </sqlMap>
-
 
