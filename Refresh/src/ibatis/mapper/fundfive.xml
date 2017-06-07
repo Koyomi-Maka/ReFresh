@@ -29,8 +29,8 @@
   <select id="businessSelecteAll" resultClass="busi">
 	select * from business order by bnum
   </select>
-  <select id="businessSelLogin" parameterClass="busi" resultClass="int">
-    select count(*) from business where idbnum=#idbnum# and bpass=#bpass#
+  <select id="businessSelLogin" parameterClass="int" resultClass="String">
+    select bpass from business where idbnum=#idbnum#
   </select>
  
  

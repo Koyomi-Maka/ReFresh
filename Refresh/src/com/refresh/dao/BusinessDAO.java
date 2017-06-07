@@ -1,6 +1,7 @@
 package com.refresh.dao;
  
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -10,6 +11,7 @@ import ibatis.conf.MySqlMapClient;
 
 public class BusinessDAO {
 	SqlMapClient sqlMap;
+	
 	
 	public BusinessDAO() {
 		sqlMap = MySqlMapClient.getSqlMapInstance(); 
@@ -42,14 +44,17 @@ public class BusinessDAO {
 		}
 		return false;
 	}
-	public boolean selectLogin(Business busi){   
+	
+
+	public String selectLogin(int idbnum){   
+		String bpass = null;
 		try {
-			int t = (int) sqlMap.queryForObject("refresh.businessSelLogin", busi);
-			if(t==1) return true;
+			bpass = (String) sqlMap.queryForObject("refresh.businessSelLogin", idbnum);
+			return bpass;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return false;
+		return bpass;
 	}
 
 
