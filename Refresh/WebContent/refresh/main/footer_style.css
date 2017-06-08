@@ -1,0 +1,22 @@
+@CHARSET "EUC-KR";
+
+
+ #guide{
+  background-color: rgb(246,246,246);
+  color: #483636;
+  margin-top:200px;
+  margin-left:120px;
+  margin-right:120px;
+  margin-bottom:200px;
+ }
+ #guide ul li {
+  list-style:none;
+  font-size:14px;
+  padding-right:90px;
+ }
+ #guide p {
+  border-left-color : red;
+  border-left-style : solid;
+  font-size:26px;
+  font-weight: bold;
+ }
