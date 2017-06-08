@@ -6,48 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="body_style.css">
 <title>FundFive</title>
-<style type="text/css">
-#meni{
- 
- margin-bottom:60px;
-}
- #meni ul {
-   list-style-type:none;
- }
- #meni li {
- float: left;
- }
-</style>
-
-
-</script>
-
-
 </head>
  
 <body>
- <div id="header2(logout)"><jsp:include page="header2(logout).jsp"/></div>
- <!-- header -->
-  <div id="main">
-  
-  <br/>
-   <div id="menu" style="font-size:24px">
-    <ul>
-     <li><a href="">전체</a></li>
-     <li><a href="">카테고리</a></li>
-     <li><a href="">투자</a></li>
-     <li><a href="">리워드</a></li>
-    </ul>
-  
-   </div>
-  <div id="meni" style="font-size:22px;">
-  <ul>
-  
-  
   <table border="1" cellpadding="1">
       <tr class="td">
          <th width="100"><font size=5>회사명</font></th>

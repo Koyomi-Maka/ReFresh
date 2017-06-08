@@ -42,19 +42,14 @@ public class InvestorDAO {
 	public boolean invesSelectLogin(String idmail,String ipass) {
 		try {
 			String pass = (String)sqlMap.queryForObject("refresh.invesSelectLogin",idmail);
-			if(ipass.equals(pass)){
+			if(ipass.trim().equals(pass.trim())){
 				return true;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return false;
-	}
-	
-	public boolean invesSelectReply(String idmail){
-		return true;
 	}	
-	
 	
 	public Investor invesSelect(String idmail) {
 		Investor inves = null;

@@ -21,11 +21,11 @@
 	delete from business where bnum=#bnum#
   </delete>
 	
-  <select id="businessSelecte" parameterClass="int" resultClass="busi">
+  <select id="businessSelect" parameterClass="int" resultClass="busi">
 	select * from business where idbnum=#idbnum#
   </select> 
   
-  <select id="businessSelecteAll" resultClass="busi">
+  <select id="businessSelectAll" resultClass="busi">
 	select * from business order by bnum
   </select>
   
@@ -52,6 +52,10 @@
   	delete from investor where inum=#inum#
   </delete>
   
+  <select id="invesSelectLogin" parameterClass="String" resultClass="String">
+  	select pass from investor where idmail=#idmail#
+  </select>
+
   <select id="invesIdcheck" parameterClass="String" resultClass="int">
   	select count(*) from investor where idmail=#idmail#
   </select>
