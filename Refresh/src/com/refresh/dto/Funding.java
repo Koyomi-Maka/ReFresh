@@ -1,6 +1,6 @@
 package com.refresh.dto;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Funding {
 /*	
@@ -17,24 +17,59 @@ public class Funding {
 	등록일
 	등록가능일수
 			*/
-	
+	private int ddate;
 	private int pnum;
 	private String pname;
 	private String pu; 
 	private String state;
 	private String category;
 	private String bname;
+	private String ceoname;
 	private int gmoney;
 	private int cmoney;
 	private int rate;
 	private String fcontent;
 	private Date fdate; 
 	private Date deadline;
+	private String fileName;
+	private String m_fileFullPath;
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getM_fileFullPath() {
+		return m_fileFullPath;
+	}
+
+	public void setM_fileFullPath(String m_fileFullPath) {
+		this.m_fileFullPath = m_fileFullPath;
+	}
+
+	public String getCeoname() {
+		return ceoname;
+	}
+
+	public void setCeoname(String ceoname) {
+		this.ceoname = ceoname;
+	}
 	
+	public int getDdate() {
+		return ddate;
+	}
+
+	public void setDdate(int ddate) {
+		this.ddate = ddate;
+	}
+
 	public Funding() {
 	}
 	
-	public Funding(int pnum, String pname, String pu, String state, String category, String bname, int gmoney,
+	public Funding(int pnum, String pname, String pu, String state, String category, String bname,String ceoname, int gmoney,
 			int cmoney, int rate, String fcontent, Date fdate, Date deadline) {
 		this.pnum = pnum;
 		this.pname = pname;
@@ -42,6 +77,7 @@ public class Funding {
 		this.state = state;
 		this.category = category;
 		this.bname = bname;
+		this.ceoname=ceoname;
 		this.gmoney = gmoney;
 		this.cmoney = cmoney;
 		this.rate = rate;
@@ -119,9 +155,9 @@ public class Funding {
 	public Date getDeadline() {
 		return deadline;
 	}
-	public void setDeadline(Date deadline) {
-		this.deadline = deadline;
-	} 
+	public Date setDeadline(Date date){
+		return deadline;
+	}
 
 	
 }
