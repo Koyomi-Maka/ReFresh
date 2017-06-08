@@ -52,6 +52,9 @@
          <td><input type="text" name="idname" id="idname" placeholder="이메일"  maxlength="30" readonly  style="width: 260px;height:30px" value="${ investor.idmail}"></td>
         </tr>
         <tr>
+			<td style="width: 260px;height:10px" ></td>
+        </tr>
+        <tr>
          <td><input type="password" name="ipass" id="ipass" placeholder="비밀번호" maxlength="30" onkeyup="passCheck()" style="width: 260px;height:30px" value="${ investor.ipass}"></td>
         </tr>
         <tr>
@@ -76,6 +79,9 @@
        <tr>
         <td><input type="text" placeholder="이름" id="iname" maxlength="30" style="width: 260px;height:30px" readonly value="${ investor.iname}"></td>
        </tr>
+        <tr>
+			<td style="width: 260px;height:10px" ></td>
+        </tr>
       <tr>
        <td><input type="text" placeholder="전화번호" id="iphone" onfocus="phoneCheck()" onkeyup="phoneCheck()" maxlength="11" style="width: 260px;height:30px" value="${ investor.iphone}"></td>
       </tr>

@@ -16,19 +16,19 @@
       <param-name>config</param-name>
       <param-value>/WEB-INF/struts-config.xml</param-value>
     </init-param>
+    <init-param>
+      <param-name>chainConfig</param-name>
+      <param-value>org/apache/struts/tiles/chain-config.xml</param-value>
+    </init-param>
     <load-on-startup>2</load-on-startup>
  </servlet>
 
   <!-- Standard Action Servlet Mapping -->
-  <servlet>
-    <servlet-name>fund</servlet-name>
-    <servlet-class>com.refresh.control.FundControl</servlet-class>
-  </servlet>
-  
   <servlet-mapping>
-   <servlet-name>fund</servlet-name>
-   <url-pattern>/refresh</url-pattern>
+    <servlet-name>action</servlet-name>
+    <url-pattern>*.do</url-pattern>
   </servlet-mapping>
+
   
 
   <!-- The Usual Welcome File List -->
