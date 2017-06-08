@@ -1,0 +1,57 @@
+@CHARSET "EUC-KR";
+#header { 
+  background: lightgrey; 
+  background: -webkit-linear-gradient(left top, black, lightgrey); 
+  background: -o-linear-gradient(bottom right, black, lightgrey); 
+  background: -moz-linear-gradient(bottom right, black, lightgrey); 
+  background: linear-gradient(to bottom right, black, lightgrey); 
+  
+  max-width:1280px;
+  margin:auto;
+  margin-bottom:2px;
+  moz-box-shadow:0px 0px 4px rgb(55,55,55);
+  -webkit-box-shadow:0px 0px 4px rgb(55,55,55);
+  }
+ .span{
+ height:60px;
+ width:80px;
+ 
+ font-weight:bold;
+ font-size:36px;
+ font-family: "¸¼Àº °íµñ", "µ¸¿ò", san-serif;
+ color: black;
+ margin-left:20px;
+ 
+ padding-bottom: 16px;
+ padding-right: 5px;
+ padding-left: 24px;
+ 
+ position:relative;
+ bottom:12px;
+ 
+ }
+ 
+ .image{
+ padding-left:50px;
+ }
+ 
+ .join{
+ height:55px; 
+ 
+ border: 1px solid lightblue;
+ background-color:lightgrey;
+ 
+ font-size:24px; 
+ font-family:'¸¼Àº °íµñ';
+ 
+ padding:17px 50px 16px; 
+ position:relative;
+ left:60px;
+ bottom:20px;
+ }
+ 
+ .span A:link {text-decoration:none;color:black}
+ .span A:visited {text-decoration:none; color:black}
+ .span A:hover {text-decoration:none; color:lightgrey}
+ .a-hover:hover {text-decoration:none;color:#747474}
+ 
