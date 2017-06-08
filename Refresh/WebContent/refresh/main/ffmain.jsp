@@ -8,8 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-	<header>
+<header>
 	<center>
 		<table>
 			<tr>
@@ -17,22 +16,21 @@
 			</tr>
 		</table>
 	</center>
-	</header>
+</header>
+<body>
 	<center>
-		<h3></h3>
-		<hr>
-		<table border="1" width="100%">
+		<table>
 			<tr>
 				<td><tiles:insert attribute="body"/></td>
 			</tr>
 		</table>
 	</center>
-	<footer>
+</body>
+<footer>
 		<table>
 			<tr>
 				<td><tiles:insert attribute="footer"/></td>
 			</tr>
 		</table>
-	</footer>
-</body>
+</footer>
 </html>

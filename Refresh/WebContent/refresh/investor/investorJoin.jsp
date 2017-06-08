@@ -18,8 +18,8 @@
 	}
 	function passCheck(){
 		idCheck();
-		var valpass = /^[A-Za-z0-9]{8,15}$/;        
 
+		var valpass = /^[A-Za-z0-9]{8,20}$/;        
 		var pass = document.getElementById("ipass").value;
 		var passck = document.getElementById("ipassck").value;
 		if(pass==null||pass==''){

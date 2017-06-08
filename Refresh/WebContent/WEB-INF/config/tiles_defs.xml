@@ -6,9 +6,63 @@
 <tiles-definitions>
     <definition name=".main" path="/refresh/main/ffmain.jsp">
     	   	<put name="header" value="/refresh/main/header.jsp"></put>
-    	   	<put name="menu" value=""></put>
-    	   	<put name="body" value="/refresh/main/mainList.jsp"></put>
-    	   	<put name="footer" value=""></put>
-    </definition>
+    	   	<put name="body" value="/refresh/main/body.jsp"></put>
+    	   	<put name="footer" value="/refresh/main/footer.jsp"></put>
+    </definition>    
+    
+    <definition name=".login" path="/refresh/main/ffmain.jsp">
+    	   	<put name="header" value="/refresh/main/header.jsp"></put>
+    	   	<put name="body" value="/refresh/login/loginPage.jsp"></put>
+    </definition>    
+    
+    <definition name=".join" path="/refresh/main/ffmain.jsp">
+    	   	<put name="header" value="/refresh/main/header.jsp"></put>
+    	   	<put name="body" value="/refresh/login/joinPage.jsp"></put>
+    </definition>    
+    <definition name=".join_inves" path="/refresh/main/ffmain.jsp">
+    	   	<put name="header" value="/refresh/main/header.jsp"></put>
+    	   	<put name="body" value="/refresh/investor/investorJoin.jsp"></put>
+    </definition>    
+    <definition name=".join_busin" path="/refresh/main/ffmain.jsp">
+    	   	<put name="header" value="/refresh/main/header.jsp"></put>
+    	   	<put name="body" value="/refresh/business/businessJoin.jsp"></put>
+    </definition>    
+    <definition name=".edit_inves" path="/refresh/main/ffmain.jsp">
+    	   	<put name="header" value="/refresh/main/header.jsp"></put>
+    	   	<put name="body" value="/refresh/investor/investorEdit.jsp"></put>
+    </definition>    
+    <definition name=".edit_busin" path="/refresh/main/ffmain.jsp">
+    	   	<put name="header" value="/refresh/main/header.jsp"></put>
+    	   	<put name="body" value="/refresh/business/businessEdit.jsp"></put>
+    </definition>    
+    
+    <definition name=".fund_write" path="/refresh/main/ffmain.jsp">
+    	   	<put name="header" value="/refresh/main/header.jsp"></put>
+    	   	<put name="body" value="/refresh/funding/fundWrite.jsp"></put>
+    </definition>    
+    <definition name=".fund_edit" path="/refresh/main/ffmain.jsp">
+    	   	<put name="header" value="/refresh/main/header.jsp"></put>
+    	   	<put name="body" value="/refresh/funding/fundEdit.jsp"></put>
+    </definition>    
+    <definition name=".fund_info" path="/refresh/main/ffmain.jsp">
+    	   	<put name="header" value="/refresh/main/header.jsp"></put>
+    	   	<put name="body" value="/refresh/funding/fundInfo.jsp"></put>
+    	   	<put name="footer" value="/refresh/reply/replyWrite.jsp"></put>
+    </definition>    
+    
+    <definition name=".mypage_admin" path="/refresh/main/ffmain.jsp">
+    	   	<put name="header" value="/refresh/main/header.jsp"></put>
+    	   	<put name="body" value="/refresh/admin/adminPage.jsp"></put>
+    </definition>    
+    <definition name=".mypage_inves" path="/refresh/main/ffmain.jsp">
+    	   	<put name="header" value="/refresh/main/header.jsp"></put>
+    	   	<put name="body" value="/refresh/mypage/investorPage.jsp"></put>
+    </definition>    
+    <definition name=".mypage_busin" path="/refresh/main/ffmain.jsp">
+    	   	<put name="header" value="/refresh/main/header.jsp"></put>
+    	   	<put name="body" value="/refresh/mypage/businessPage.jsp"></put>
+    </definition>    
+    
+    
     
 </tiles-definitions>

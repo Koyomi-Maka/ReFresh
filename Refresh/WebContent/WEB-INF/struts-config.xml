@@ -91,14 +91,23 @@
             <!-- Forwards to Welcome.jsp -->
 
             
-        <action
-            path="/Welcome"
-            forward="/pages/Welcome.jsp"/>
             
-		<action path="/refresh/invesjoin"
-		    forward="/refresh/investor/investorJoin.jsp"/>
+        <action path="/refresh/main" forward=".main"/>
+               
+        <action path="/refresh/login" forward=".login"/>
+        <action path="/refresh/join" forward=".join"/>
+        <action path="/refresh/join/inves" forward=".join_inves"/>
+        <action path="/refresh/join/busin" forward=".join_busin"/>
+        <action path="/refresh/edit/inves" forward=".edit_inves"/>
+        <action path="/refresh/edit/busin" forward=".edit_busin"/>
+        <action path="/refresh/fund/write" forward=".fund_write"/>
+        <action path="/refresh/fund/edit" forward=".fund_edit"/>
+        <action path="/refresh/fund/info" forward=".fund_info"/>
+        <action path="/refresh/mypage/admin" forward=".mypage_admin"/>
+        <action path="/refresh/mypage/inves" forward=".mypage_inves"/>
+        <action path="/refresh/mypage/busin" forward=".mypage_busin"/>
 		
-		<action path="/refresh/main" forward=".main"/>
+
 		
     <!-- sample input and input submit actions
 

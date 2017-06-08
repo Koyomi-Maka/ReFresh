@@ -55,7 +55,6 @@
         	    out.print("<script>idcheck('"+idmail+"');</script>");	
         	}
         }
-     
      %> 
 </body>
 </html>
