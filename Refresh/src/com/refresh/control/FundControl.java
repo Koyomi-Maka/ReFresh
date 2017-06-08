@@ -24,27 +24,44 @@ public class FundControl extends HttpServlet {
 	public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
-
-		if(action.equals("admin")) { // 관리자페이지에 댓글,회원관리,기업관리,게시물보이기
-
-			ReplyDAO rdao = new ReplyDAO();
-			List<Reply> reply_list = rdao.selectAll();
+//////////////// ====관리자페이지에 댓글,회원관리,기업관리,게시물보이기====//////////////////////////
+		if(action.equals("admin")) { 
 			
+			String pageStr = req.getParameter("page"); 
+			  int page;
+			  if(pageStr==null){
+				  page=1;
+			  }else{
+			      page= Integer.parseInt(pageStr);
+			  }
+			  ReplyDAO rdao = new ReplyDAO();
+			  
+			  int recordCount=5;
+			  int totalRecord= rdao.selectCount();//32;
+			  int totalPage=totalRecord/recordCount;//3
+			  if(totalRecord%recordCount>0){
+				  totalPage++;
+			  }
+
+			  List<Reply> reply_list = rdao.selectPage(page,recordCount);
+			  req.setAttribute("reply_list", reply_list);	
+			  req.setAttribute("page", page);
+			  req.setAttribute("totalPage", totalPage);   
+//------------------------댓글list------------------------------		
 			InvestorDAO idao = new InvestorDAO();
 			List<Investor> investor_list = idao.invesSelectAll();
+			req.setAttribute("investor_list", investor_list);
 			
+//------------------------개인 list------------------------------			
 			BusinessDAO bdao = new BusinessDAO();
 			List<Business> business_list = bdao.selectAll();
-			
-			
-			//펀딩 dao가 아직 안만들어져서 주석처리
-			//FundingDAO fdao = new FundingDAO();
-			//List<Funding> funding_list = fdao.sellectAll();
-			
-			
-			req.setAttribute("reply_list", reply_list);
-			req.setAttribute("investor_list", investor_list);
 			req.setAttribute("business_list", business_list);
+			
+//------------------------기업 list------------------------------			
+			FundingDAO fdao = new FundingDAO();
+			
+//	List<Funding> funding_list = fdao.selectPageAll(page, recordCount)();
+
 			//req.setAttribute("funding_list", funding_list);
 			req.getRequestDispatcher("/admin/adminPage.jsp").forward(req, resp);
 		}
@@ -66,8 +83,6 @@ public class FundControl extends HttpServlet {
 			        reply.setPnum(Integer.parseInt(pnum));			       
 			        reply.setRname(req.getParameter("rname"));
 			        reply.setRcontent(req.getParameter("rcontent"));
-			        
-			       // reply.setRdate(Date); 날짜......받기.. ==> 수정폼필요
 
 			   ReplyDAO rdao = new ReplyDAO();
 			   if(rdao.update(reply)){//댓글수정성공
@@ -165,40 +180,129 @@ public class FundControl extends HttpServlet {
 		   
 //////////////////////////////////////개인회원///////////////////////////////////////////
 		   
-/*	   }else if(action.equals("replyedit")){//개인수정폼요청
-		   InvestorDAO idao = new InvestorDAO();
+else if(action.equals("investoredit"))
 
-			Investor investor = idao.invesSelect(req.getParameter("idmail")) ;
-			req.getSession().setAttribute("investor_update", investor);			
-			req.getRequestDispatcher("/refresh/investor/investorEdit.jsp").forward(req, resp);
-			
-		}else if(action.equals("replyupdate")){//개인회원수정
-			Investor investor = new Investor();
-			      String rnum = req.getParameter("rnum");
-			      String pnum = req.getParameter("pnum");
+	{// 개인수정폼요청
+		InvestorDAO idao = new InvestorDAO();
 
-			        reply.setRnum(Integer.parseInt(rnum));
-			        reply.setPnum(Integer.parseInt(pnum));			       
-			        reply.setRname(req.getParameter("rname"));
-			        reply.setRcontent(req.getParameter("rcontent"));
-			        
-			       // reply.setRdate(Date); 날짜......받기.. ==> 수정폼필요
+		Investor investor = idao.invesSelect(req.getParameter("idmail"));
+		req.getSession().setAttribute("investor_update", investor);
+		req.getRequestDispatcher("/refresh/investor/investorEdit.jsp").forward(req, resp);
 
-			   ReplyDAO rdao = new ReplyDAO();
-			   if(rdao.update(reply)){//댓글수정성공
-				   resp.sendRedirect("control?action=list");
-			   }else{
-				   resp.getWriter().print("수정에 실패했습니다.");
-			   }
-	}else if(action.equals("replydelete")){//글삭제 요청
-		   int rnum =   Integer.parseInt(req.getParameter("rnum"));
-		   
-		   ReplyDAO rdao = new ReplyDAO();
-		   if(rdao.delete(rnum)){//삭제성공
-			   resp.sendRedirect("control?action=admin");
-		   }else{
-			   resp.getWriter().print("삭제실패");
-		   }
-	   }*/
-		}// service
+	}else if(action.equals("investorupdate"))
+	{// 개인회원수정
+		Investor investor = new Investor();
+		String inum = req.getParameter("inum");
+		investor.setInum(Integer.parseInt(inum));
+		investor.setIdmail(req.getParameter("idmail"));
+		investor.setIpass(req.getParameter("ipass"));
+		investor.setIname(req.getParameter("iname"));
+		investor.setIphone(req.getParameter("iphone"));
+		investor.setIbank(req.getParameter("ibank"));
+		investor.setIpay(req.getParameter("ipay"));
+
+		InvestorDAO idao = new InvestorDAO();
+
+		if (idao.invesUpdate(investor)) {// 댓글수정성공
+			resp.sendRedirect("control?action=admin");
+		} else {
+			resp.getWriter().print("수정에 실패했습니다.");
+		}
+	}else if(action.equals("investordelete"))
+	{// 글삭제 요청
+		int inum = Integer.parseInt(req.getParameter("inum"));
+
+		InvestorDAO idao = new InvestorDAO();
+		if (idao.invesDelete(inum)) {// 삭제성공
+			resp.sendRedirect("control?action=admin");
+		} else {
+			resp.getWriter().print("삭제실패");
+		}
+	}
+
+	///////////////////////////////////////// 기업회원////////////////////////////////////////////
+
+	else if(action.equals("businessedit")){// 기업수정폼요청
+		BusinessDAO bdao = new BusinessDAO();
+
+		int bnum = Integer.parseInt(req.getParameter("bnum"));
+
+		Business business = bdao.select(bnum);
+		req.getSession().setAttribute("business_update", business);
+		req.getRequestDispatcher("/refresh/business/businessEdit.jsp").forward(req, resp);
+
+	}else if(action.equals("businessupdate")){// 기업회원수정
+		Business business = new Business();
+		String bnum = req.getParameter("bnum");
+		business.setBnum(Integer.parseInt(bnum));
+		business.setBname(req.getParameter("bname"));
+		business.setBpass(req.getParameter("bpass"));
+		business.setCeoname(req.getParameter("ceoname"));
+		business.setIdbnum(Integer.parseInt(req.getParameter("idbnum")));
+		business.setBtel(req.getParameter("btel"));
+		business.setBaddr(req.getParameter("baddr"));
+		business.setBacc(req.getParameter("bacc"));
+
+		BusinessDAO bdao = new BusinessDAO();
+
+		if (bdao.update(business)) {// 댓글수정성공
+			resp.sendRedirect("control?action=admin");
+		} else {
+			resp.getWriter().print("수정에 실패했습니다.");
+		}
+	}else if(action.equals("businessdelete")){// 글삭제 요청
+		int bnum = Integer.parseInt(req.getParameter("bnum"));
+
+		BusinessDAO bdao = new BusinessDAO();
+		if (bdao.delete(bnum)) {// 삭제성공
+			resp.sendRedirect("control?action=admin");
+		} else {
+			resp.getWriter().print("삭제실패");
+		}
+	}
+		
+		
+	////////////////////////////////////// 펀딩(게시list)/////////////////////////////////////////////
+	else if(action.equals("fundingedit"))
+	{// 펀딩수정폼요청
+		FundingDAO fdao = new FundingDAO();
+
+		int pnum = Integer.parseInt(req.getParameter("pnum"));
+
+		//Funding funding = fdao.select(pnum);
+	//	req.getSession().setAttribute("funding_update", funding);
+		req.getRequestDispatcher("/refresh/funding/fundingEdit.jsp").forward(req, resp);
+
+	}else if(action.equals("fundingupdate")){// 펀딩폼수정
+		Funding funding = new Funding();
+		String pnum = req.getParameter("pnum");
+		funding.setPnum(Integer.parseInt(pnum));
+		funding.setPname(req.getParameter("pname"));
+		funding.setPu(req.getParameter("pu"));
+		funding.setState(req.getParameter("state"));
+		funding.setCategory(req.getParameter("category"));
+		funding.setBname(req.getParameter("bname"));
+		funding.setGmoney(Integer.parseInt(req.getParameter("gmoney")));
+		funding.setCmoney(Integer.parseInt(req.getParameter("cmoney")));
+		funding.setRate(Integer.parseInt(req.getParameter("rate")));
+		funding.setFcontent(req.getParameter("fcontent"));
+
+		FundingDAO fdao = new FundingDAO();
+
+		/*if (fdao.update(funding)) {// 댓글수정성공
+			resp.sendRedirect("control?action=admin");
+		} else {
+			resp.getWriter().print("수정에 실패했습니다.");
+		}*/
+	}/*else if(action.equals("fundingdelete")){// 글삭제 요청
+		int pnum = Integer.parseInt(req.getParameter("pnum"));
+
+		FundingDAO fdao = new FundingDAO();
+		if (fdao.delete(pnum)) {// 삭제성공
+			resp.sendRedirect("control?action=admin");
+		} else {
+			resp.getWriter().print("삭제실패");
+		}
+	}*/
+}// service
 }
