@@ -12,10 +12,10 @@
 </head>
 <%-- adminpage.jsp --%>
 <body>
-	<h3>관리자페이지</h3>
 	<center>
-		<table border="5" cellpadding="10" width="100%">
-			 <tr>
+	<h2><관리자페이지></h3>
+		<table border="3" cellpadding="3" width="100%"  height="700">
+			 <tr bgcolor="eeffcc" height="40" >
 				<th>개인/기업회원관리</th>
 				<th>게시판관리</th>
 				<th>댓글관리</th>
@@ -24,8 +24,8 @@
 			<tr>
 				<td>
 					<center>
+					
 						<table border="1" cellpadding="5">
-							<tr class="td">
 								<th width="50">번호</th>
 								<th width="80">개인회원</th>
 								<th width="80">email</th>
@@ -33,7 +33,7 @@
 							<c:forEach items="${investor_list }" var="investor">
 								<tr>
 									<!-- DB에 저장된 개인정보list받아오기 -->
-									<td>${investor.inum }</td>
+									<td>${investor.inum } </td>
 									<td>${investor.iname}</td>
 									<td><a href="/Refresh/fund?action=investoredit&rnum=${inverstor.inum }">${investor.idmail }</a></td>
 								</tr>
