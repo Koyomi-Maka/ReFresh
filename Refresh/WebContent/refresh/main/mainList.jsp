@@ -25,9 +25,10 @@
      <button class="dropbtn">카테고리</button>
       <div class="dropdown-content">
        <a href="/Refresh/refresh?action=main&sort=all&page=1">전체</a>
-       <a href="">카테고리1</a>
-       <a href="">카테고리2</a>
-       <a href="">카테고리3</a>
+       <a href="/Refresh/refresh?action=main&sort=it&page=1">인터넷 서비스</a>
+       <a href="/Refresh/refresh?action=main&sort=culture&page=1">문화</a>
+       <a href="/Refresh/refresh?action=main&sort=design&page=1">디자인</a>
+       <a href="/Refresh/refresh?action=main&sort=product&page=1">제조/유통</a>
       </div>
      </div> <!-- 카테고리 -->
     <span style="color:#eeeeee; font-size:24px; 

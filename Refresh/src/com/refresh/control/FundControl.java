@@ -115,6 +115,9 @@ public class FundControl extends HttpServlet {
 			totalRecord = dao.selectEndedTotal();
 		}else if(sort.equals("close")){
 			totalRecord = dao.selectCloseTotal();
+		}else{
+			//특정 카테고리
+			totalRecord = dao.selectCategoryTotal(sort);
 		}
 				
 		int totalPage =  1;
@@ -141,6 +144,9 @@ public class FundControl extends HttpServlet {
 				list = dao.selectEnded(page, recordCount);
 			}else if(sort.equals("close")){
 				list = dao.selectClose(page, recordCount);
+			}else{
+				//특정 카테고리
+				list = dao.selectCategory(page, recordCount, sort);
 			}
 				
 			if(list!=null){

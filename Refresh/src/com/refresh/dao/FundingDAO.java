@@ -97,6 +97,36 @@ public class FundingDAO {
 		}
 		return totalRecord;
 	}
+
+	public List<Funding> selectCategory(int page,int recordCount,String category){
+		//특정 카테고리의 게시물만을 구하는 DAO
+		List list = null;
+		try {
+			Map<Object,Object> map = new HashMap<>();
+			int end = page * recordCount;
+			int start = end-(recordCount-1);
+			
+			map.put("category",category);
+			map.put("start",start);
+			map.put("end",end);
+			list = smc.queryForList("refresh.selectCategory",map);
+			                                
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public int selectCategoryTotal(String category){
+		int totalRecord = 0;
+		try {
+			totalRecord = (int) smc.queryForObject("refresh.selectCategoryTotal");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return totalRecord;
+	}
+	
 	//main DAO
 	//-------------------------------------------------
 }

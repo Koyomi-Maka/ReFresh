@@ -156,6 +156,26 @@
   where (sysdate-deadline) < 0 and (sysdate-deadline) >= -1
  ]]>
  </select>
+ 
+ <!-- 특정 카테고리 프로젝트 -->
+ <select id="selectCategory" resultClass="fund" parameterClass="java.util.Map">
+ <![CDATA[
+  select pname,gmoney,cmoney,rate,deadline
+  from (select pname,gmoney,cmoney,rate,deadline,rownum rn
+   from (select pname,gmoney,cmoney,rate,deadline
+        from funding
+        where category=#category#
+        )
+  where rn between #start# and #end#
+  ]]>
+ </select>
+ 
+ <select id="selectCategoryTotal" resultClass="int" parameterClass="String">
+ <![CDATA[
+  select count(*) from funding
+  where category=#category#
+ ]]>
+ </select>
   
 </sqlMap>
 
