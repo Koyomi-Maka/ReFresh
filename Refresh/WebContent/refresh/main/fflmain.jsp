@@ -30,11 +30,4 @@
 		</table>
 	</center>
 </body>
-<footer>
-		<table>
-			<tr>
-				<td><tiles:insert attribute="footer"/></td>
-			</tr>
-		</table>
-</footer>
 </html>
