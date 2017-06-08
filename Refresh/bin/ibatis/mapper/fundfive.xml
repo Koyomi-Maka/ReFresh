@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<sqlMap namespace="refresh">	
+  <typeAlias alias="reply" type="com.refresh.dto.Reply"/>
+  <typeAlias alias="inves" type="com.refresh.dto.Investor"/>
+  <typeAlias alias="busi" type="com.refresh.dto.Business"/>
+  <typeAlias alias="fund" type="com.refresh.dto.Funding"/>
+   
+<!-- Business -->
+  <insert id="businessInsert" parameterClass="busi">
+		insert into business (bnum, bname, bpass, ceoname, btel, baddr, idbnum, bacc)
+			     values (busi_seq, #bname#, #bpass#, #ceoname#, #btel#, #baddr#, #idbnum#, #bacc#)
+  </insert>
+  
+  <update id="businessUpdate" parameterClass="busi">
+    update business set bpass=#bpass#, bname=#bname#, ceoname=#ceoname#, btel=#btel#, baddr=#baddr#, 
+				    	bbank=#bbank#, bacc=#bacc# ) 
+  </update>
+	
+  <delete id="businessDelete" parameterClass="int">
+	delete from business where bnum=#bnum#
+  </delete>
+	
+  <select id="businessSelect" parameterClass="int" resultClass="busi">
+	select * from business where idbnum=#idbnum#
+  </select> 
+  
+  <select id="businessSelectAll" resultClass="busi">
+	select * from business order by bnum
+  </select>
+  
+  <select id="businessSelLogin" parameterClass="int" resultClass="String">
+    select bpass from business where idbnum=#idbnum#
+  </select>
+  
+  <select id="busiIdCheck" parameterClass="int" resultClass="int">
+    select count(*) from business where idbnum=#idbnum#
+  </select>
+ 
+ 
+<!-- Investor --> 
+  <insert id="invesInsert" parameterClass="inves">
+  	insert into investor (inum,idmail,ipass,iname,iphone,ibank,ipay)
+  				values (inves_seq.nextval,#idmail#,#ipass#,#iname#,#iphone#,#ibank#,#ipay#)
+  </insert>
+  
+  <update id="invesUpdate" parameterClass="inves">
+  	update investor set ipass=#ipass#,iphone=#iphone#,ibank=#ibank#,ipay=#ipay# where inum=#inum#
+  </update>
+  
+  <delete id="invesDelete" parameterClass="int">
+  	delete from investor where inum=#inum#
+  </delete>
+  
+  <select id="invesSelectLogin" parameterClass="String" resultClass="String">
+  	select pass from investor where idmail=#idmail#
+  </select>
+
+  <select id="invesIdcheck" parameterClass="String" resultClass="int">
+  	select count(*) from investor where idmail=#idmail#
+  </select>
+
+  <select id="invesSelect" parameterClass="String" resultClass="inves">
+  	select * from investor where idmail=#idmail#
+  </select>
+  
+  <select id="invesSelectAll" resultClass="inves">
+    select * from investor
+  </select>
+  
+  
+ <!-- Reply -->  
+  <insert id="replyInsert" parameterClass="reply">
+     insert into reply (rnum,pnum,rname,rcontent,rdate)
+                 values (reply_seq.nextval,#pnum#,#rname#,#rcontent#,sysdate)
+  </insert>
+  
+  <update id="replyUpdate" parameterClass="reply">
+     update reply set rname=#rname#,rcontent=#rcontent# where rnum=#rnum#
+     
+  </update>
+
+  <!-- 특정 댓글번호에 대한 삭제 -->
+  <delete id="replyDelete" parameterClass="int">
+     delete from reply where rnum=#rnum#
+  </delete>
+  
+  <select id="replySelectAll" resultClass="reply">
+     select rnum,rname,rcontent,rdate from reply
+     order by rnum desc
+  </select>   
+  
+  <!-- list에 출력할 데이터 조회 -->
+  <select id="replySelect" parameterClass="int" resultClass="reply">
+     select pnum,rname,rcontent from reply where rnum=#rnum#
+  </select>
+  
+    <!-- 1페이지당 댓글 출력(10건) --> 
+  <select id="replySelectPage" resultClass="reply" parameterClass="java.util.Map"><![CDATA[
+     select rnum,pnum,rname,rcontent,rdate 
+     from (select rnum,pnum,rname,rcontent,rdate,rownum rn
+           from (select rnum,pnum,rname,rcontent,rdate 
+                 from reply
+                 order by rnum desc)
+          )
+     where rn between #start# and #end#
+  ]]></select>
+  
+  <select id="replyCount" resultClass="int">
+     select count(*) from reply
+  </select>
+  
+  <!-- Main -->
+  <!-- 페이지 출력(10건) -->
+ <select id="selectPageAll" resultClass="fund" parameterClass="java.util.Map">
+ <![CDATA[
+  select pname,gmoney,cmoney,rate,deadline
+  from (select pname,gmoney,cmoney,rate,deadline,rownum rn
+   from (select pname,gmoney,cmoney,rate,deadline
+        from funding
+        order by pname desc)
+        )
+  where rn between #start# and #end#
+  ]]>
+ </select>
+ 
+ <!-- 총 게시물 갯수 -->
+ <select id="selectTotal" resultClass="int">
+  select count(*) from funding
+ </select>
+ 
+ <!-- 종료된 프로젝트 -->
+ <select id="selectEnded" resultClass="fund" parameterClass="java.util.Map">
+ <![CDATA[
+  select pname,gmoney,cmoney,rate,deadline
+  from (select pname,gmoney,cmoney,rate,deadline,rownum rn
+   from (select pname,gmoney,cmoney,rate,deadline
+        from funding
+        where (sysdate-deadline) >= 0)
+        )
+  where rn between #start# and #end#
+  ]]>
+ </select>
+ 
+ <select id="selectEndedTotal" resultClass="int">
+ <![CDATA[
+  select count(*) from funding
+  where (sysdate-deadline) >= 0
+  ]]>
+ </select>
+ 
+ <!-- 마감 직전 프로젝트 -->
+ <select id="selectClose" resultClass="fund" parameterClass="java.util.Map">
+ <![CDATA[
+  select pname,gmoney,cmoney,rate,deadline
+  from (select pname,gmoney,cmoney,rate,deadline,rownum rn
+   from (select pname,gmoney,cmoney,rate,deadline
+        from funding
+        where (sysdate-deadline) < 0 and (sysdate-deadline) >= -1)
+        )
+  where rn between #start# and #end#
+  ]]>
+ </select>
+ 
+ <select id="selectCloseTotal" resultClass="int">
+ <![CDATA[
+  select count(*) from funding
+  where (sysdate-deadline) < 0 and (sysdate-deadline) >= -1
+ ]]>
+ </select>
+ 
+ <!-- 특정 카테고리 프로젝트 -->
+ <select id="selectCategory" resultClass="fund" parameterClass="java.util.Map">
+ <![CDATA[
+  select pname,gmoney,cmoney,rate,deadline
+  from (select pname,gmoney,cmoney,rate,deadline,rownum rn
+   from (select pname,gmoney,cmoney,rate,deadline
+        from funding
+        where category=#category#
+        )
+  where rn between #start# and #end#
+  ]]>
+ </select>
+ 
+ <select id="selectCategoryTotal" resultClass="int" parameterClass="String">
+ <![CDATA[
+  select count(*) from funding
+  where category=#category#
+ ]]>
+ </select>
+  
+</sqlMap>
+
