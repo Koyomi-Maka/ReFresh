@@ -49,6 +49,20 @@
  left:60px;
  bottom:20px;
  }
+ .space{
+ height: 25px;
+ border: 1px solid lightblue;
+ background-color:lightgrey;
+ 
+ font-size:24px; 
+ font-family:'¸¼Àº °íµñ';
+ 
+ padding:17px 30px 16px; 
+ position:relative;
+ 
+ left:20px;
+ bottom:20px;
+ }
  
  .span A:link {text-decoration:none;color:black}
  .span A:visited {text-decoration:none; color:black}
