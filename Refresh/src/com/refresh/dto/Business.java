@@ -4,7 +4,7 @@ public class Business {
 /*	
 	회사회원번호
   	회사명
-	비밀번호
+	비밀번호 
 	대표자
 	회사번호
 	전화번호
@@ -19,13 +19,14 @@ public class Business {
 	private int idbnum;
 	private String btel;
 	private String baddr;
+	private String bbank;	
 	private String bacc;
 	
 	public Business() {
 	}
 	
 	public Business(int bnum, String bname, String bpass, String ceoname, 
-			int idbnum, String btel, String baddr,String bacc) {
+			int idbnum, String btel, String baddr,String bbank, String bacc) {
 	this.bnum = bnum;
 	this.bname = bname;
 	this.bpass = bpass;
@@ -33,7 +34,16 @@ public class Business {
 	this.idbnum = idbnum;
 	this.btel = btel;
 	this.baddr = baddr;
+	this.bbank = bbank;
 	this.bacc = bacc;
+	}
+
+	public final String getBbank() {
+		return bbank;
+	}
+
+	public final void setBbank(String bbank) {
+		this.bbank = bbank;
 	}
 
 	public int getBnum() {
