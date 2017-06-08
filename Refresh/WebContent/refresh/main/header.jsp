@@ -11,7 +11,7 @@
  <span class="span"><a href="/Refresh/refresh?action=main#guide">이용안내</a></span>
  <% 
   String login = (String) session.getAttribute("login");
-  if(login.equals("fail") || login==null){ %>
+  if(login==null || login.equals("fail")){ %>
  <span class="join"><a href="/Refresh/refresh/login/loginPage.jsp" style="text-decoration: none;">로그인</a>
                     <font color="black">/</font>
                     <a href="/Refresh/refresh/login/joinPage.jsp" style="text-decoration: none;">회원가입</a></span>

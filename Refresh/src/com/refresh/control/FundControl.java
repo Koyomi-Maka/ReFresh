@@ -174,7 +174,7 @@ public class FundControl extends HttpServlet {
 					req.setAttribute("totalPage", totalPage);
 					}//for
 				}//if
-			req.getRequestDispatcher("/refresh/main/mainList.jsp")
+			req.getRequestDispatcher("/refresh/main/ffmain.jsp")
 			.forward(req, resp);
 			}//main»≠∏È
 		   
