@@ -45,7 +45,7 @@ public class BusinessDAO {
 		return false;
 	}
 	
-
+	
 	public String selectLogin(int idbnum){   
 		String bpass = null;
 		try {
@@ -56,8 +56,27 @@ public class BusinessDAO {
 		}
 		return bpass;
 	}
+	
+	public boolean busiIdCheck(int idbnum){ // 중복확인
+		try {
+			int t = (int) sqlMap.queryForObject("refresh.busiIdCheck",idbnum);
+			if(t>0) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 
-
+	public int bIdCheck(int idnum){
+		int t=0;
+		try {
+			t = (int) sqlMap.queryForObject("refresh.businessCheckId",idnum);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return t;
+	}
+	
 	public Business select(int idbnum){
 		Business busi = null;   
 		try {
@@ -77,14 +96,4 @@ public class BusinessDAO {
 		return list;
 	}
 
-	public int checkId(int idnum){
-		int t=0;
-		try {
-			 t = (int) sqlMap.queryForObject("refresh.businessCheckId",idnum);
-			// System.out.println("아이디 넘겨주는 값 : "+t);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return t;
-	}
 }

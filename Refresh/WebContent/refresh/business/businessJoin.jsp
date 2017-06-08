@@ -6,10 +6,11 @@
 <title>Insert title here</title>
 
 <script type="text/javascript">
+	
 	function idbnumCheck(){ //사업자번호 null
 		var idbnum = document.getElementById("idbnum").value;
 		if(idbnum==null||idbnum==''){
-			document.getElementById("bidnumCheck").innerHTML = "<font color='Red'><small>사업자번호(ID)를 입력하세요<small></font>"; 
+		  document.getElementById("bidnumCheck").innerHTML = "<font color='red'><small>아이디를 입력하세요<small></font>"; 		     		
 		}
  	}
 	
@@ -59,26 +60,31 @@
 			document.getElementById("baddrCheck").innerHTML = "<font color='Red'><small>주소를을 입력하세요<small></font>"; 
 		}
 	} 	
-	function bbankCheck(){ //은행 null
-		bbankCheck();
+	
+
+	function bbankCheck(){ 
+		baddrCheck();
+		var bacc = document.getElementById("bacc").value;
 		var bbank = document.getElementById("bbank").value;
-		if(bbank==null||bbank==''){
+		if(bbank.value('==은행==')){
 			document.getElementById("bbankCheck").innerHTML = "<font color='Red'><small>은행을 선택하세요</small></font>"; 
-		}else if(bacc==null||bacc==''){
+		}else if(bacc==null||bacc.length==0){
 			document.getElementById("bbankCheck").innerHTML = "<font color='Red'><small>계좌를 입력하세요<small></font>"; 			
 		}
 	}
 			
-	
+	 function bIdCheck(){ //중복확인
+	    	window.open('bIdCheck.jsp','confirm','width=350,height=170');
+	     }
 </script>
 </head>
 <body>
  <center>
+	  <form action="../login/loginPage.jsp" method="POST">
   <table bgcolor="#009933"  width="380" border="0" align="center" cellpadding="4" cellspacing="5">
    <tbody>
 	<tr>
 	 <td>
-	  <form action="" method="POST">
 	   <table bgcolor="#ffffff"  width="360" border="0" align="center" cellpadding="5" cellspacing="6">
 		<tbody>
 		<tr>
@@ -86,7 +92,7 @@
 		</tr>
 		<tr>
 		 <td><input type="text" name="idbnum" placeholder="사업자번호_ID" style="width: 260px;height:30px" id="idbnum" readonly></td>
-		 <td><input type="button" value="중복확인" style="width: 65px"></td>
+		 <td><input type="button" value="중복확인" style="width: 65px" onclick="bIdCheck()"></td>
 		</tr>
 		<tr>
 		 <td style="width: 260px;height:10px"><div id="bidnumCheck"><small>사업자번호 확인</small></div></td>
@@ -102,12 +108,10 @@
 	    </tr>
 	   </tbody>
 	   </table>
-	  </form>
      </td>
     </tr>
     <tr> 
      <td>
-      <form action="" method="POST">
        <table  bgcolor="#ffffff" width="360" border="0" align="center" cellpadding="5" cellspacing="6">
 	    <tr>
 		 <td><input type="text" name="bnum" readonly="readonly"  placeholder="기업회원번호" style="width: 260px;height: 30px"></td> <!-- 기업회원_번호 -->
@@ -137,52 +141,49 @@
 		 <td style="width: 260px;height:10px"><div id="baddrCheck"><small>회사주소 확인</small></div></td>
 		</tr>
        </table>
-      </form>
      </td>
     </tr>
     <tr>   
      <td>
-      <form action="" method="POST">
        <table  bgcolor="#ffffff" width="360" border="0" align="center" cellpadding="5" cellspacing="6">
 	    <tbody>
 	    <tr>
 		 <td align="center" valign="middle">
-			<select id="bbank" style="width: 100px;height:30px" onfocus="baddrCheck()" > 
-				<option >==은행==</option>
-				<option>국민은행</option>
-				<option>신한은행</option>
-				<option>하나은행</option>
-				<option>우리은행</option>
-				<option>우체국</option>
-				<option>농협</option>
+			<select id="bbank" style="width: 100px;height:30px" onkeydown="bbankCheck()"> 
+				<option value="==은행==">==은행==</option>
+				<option value="국민은행">국민은행</option>
+				<option value="신한은행">신한은행</option>
+				<option value="하나은행">하나은행</option>
+				<option value="우리은행">우리은행</option>
+				<option value="우체국">우체국</option>
+				<option value="농협">농협</option>
 			 </select>
 		  </td>
-		  <td align="center" valign="middle">
-			 <input type="text" id="bacc" name="bacc" placeholder="회사계좌정보" style="width: 220px;height:30px">
+		  <td align="center" valign="middle" >
+			 <input type="text" id="bacc" onkeypress="bbankCheck()" name="bacc" placeholder="회사계좌정보" style="width: 220px;height:30px"  >
 		  </td>
 	     </tr>
 	     <tr>
-		  <td style="width: 260px;height:10px"><div id="bbankCheck"><small>계좌정보 확인</small></div></td>
+		  <td colspan="2" style="width: 260px;height:10px"><div id="bbankCheck"><small>계좌정보 확인</small></div></td>
 	     </tr>
 	     </tbody>
         </table>
-       </form>
       </td>
      </tr>
      <tr>
 	  <td>
-	  	<form>
+
 	  	 <table  bgcolor="#ffffff" width="360" border="0" align="center" cellpadding="5" cellspacing="6">
 		  <tr>
-		   <td align="center" valign="middle"><input type="button" value="등록"></td>
+		   <td align="center" valign="middle"><input type="submit" value="등록"></td>
 		   <td align="center" valign="middle"><input type="reset" value="취소" onclick="history.back()"></td>
 		  </tr>
 		 </table>
-		</form>
 	  </td>
      </tr>	
     </tbody>
    </table>
+		</form>
   </center>
  </body>
 </html>

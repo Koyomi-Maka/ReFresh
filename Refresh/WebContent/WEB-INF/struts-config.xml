@@ -90,7 +90,13 @@
             <!-- Default "Welcome" action -->
             <!-- Forwards to Welcome.jsp -->
 
-            
+
+
+       	<action path="/Refresh/idCheck"
+       			type="com.refresh.control.BJoinControl"
+       			input="/Refresh/refresh/business/bIdCheck.jsp">
+       		<forward name="success" path="/Refresh/refresh/business/bIdCheck.jsp"/>
+       	</action>   
             
         <action path="/refresh/main" forward=".main"/>
                
