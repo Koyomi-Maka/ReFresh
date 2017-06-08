@@ -18,9 +18,7 @@
 	}
 	function passCheck(){
 		idCheck();
-		var valpass = /^[A-Za-z0-9]{8,15}$/g;        
-
-
+		var valpass = /^[A-Za-z0-9]{8,15}$/;        
 
 		var pass = document.getElementById("ipass").value;
 		var passck = document.getElementById("ipassck").value;

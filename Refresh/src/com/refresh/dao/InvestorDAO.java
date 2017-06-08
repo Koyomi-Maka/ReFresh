@@ -25,6 +25,7 @@ public class InvestorDAO {
 			}
 		return false;
 	}
+
 	public boolean invesIdcheck(String idmail) {
 		try {
 			int i = (int)sqlMap.queryForObject("refresh.invesIdcheck",idmail);
@@ -32,12 +33,28 @@ public class InvestorDAO {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		}	
 		return false;
 	}
+	
+	
+	public boolean invesSelectLogin(String idmail,String ipass) {
+		try {
+			String pass = (String)sqlMap.queryForObject("refresh.invesSelectLogin",idmail);
+			if(ipass.equals(pass)){
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean invesSelectReply(String idmail){
+		return true;
+	}	
+	
 	
 	public Investor invesSelect(String idmail) {
 		Investor inves = null;
@@ -69,7 +86,7 @@ public class InvestorDAO {
 		}
 		return false;
 	}
-	
+
 	public boolean invesUpdate(Investor inves) {
 		try {
 			int t = sqlMap.update("refresh.invesUpdate", inves);

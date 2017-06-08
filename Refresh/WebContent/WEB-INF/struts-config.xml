@@ -94,7 +94,11 @@
         <action
             path="/Welcome"
             forward="/pages/Welcome.jsp"/>
-
+            
+		<action path="/refresh/invesjoin"
+		    forward="/refresh/investor/investorJoin.jsp"/>
+		
+		<action path="/refresh/main" forward=".main"/>
 		
     <!-- sample input and input submit actions
 

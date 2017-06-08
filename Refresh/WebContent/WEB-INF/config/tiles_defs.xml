@@ -4,10 +4,10 @@
        "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
        
 <tiles-definitions>
-    <definition name=".main" path="">
-    	   	<put name="header" value=""></put>
+    <definition name=".main" path="/refresh/main/ffmain.jsp">
+    	   	<put name="header" value="/refresh/main/header.jsp"></put>
     	   	<put name="menu" value=""></put>
-    	   	<put name="body" value=""></put>
+    	   	<put name="body" value="/refresh/main/mainList.jsp"></put>
     	   	<put name="footer" value=""></put>
     </definition>
     
