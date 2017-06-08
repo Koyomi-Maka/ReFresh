@@ -58,7 +58,7 @@
 									<td>${funding.pname }</td>
 									<td>${funding.fdate }</td>
 									<td><a
-										href="/TomTest/guest/control?action=fundingedit&id=${funding.pnum }">${funding.rate }</a></td>
+										href="/Refresh/fund?action=fundingedit&id=${funding.pnum }">${funding.rate }</a></td>
 								</tr>
 							</c:forEach>
 						</table>
