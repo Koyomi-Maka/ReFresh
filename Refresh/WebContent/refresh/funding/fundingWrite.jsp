@@ -8,7 +8,7 @@
 
 </head>
 <body>
-<form action="fundWrite.do?action=insert" enctype="multipart/form-data" method="post">
+<form action="fund/write.do?action=insert" enctype="multipart/form-data" method="post">
 	<center>
 	<table border="1">
 		<tr>
@@ -38,7 +38,7 @@
 					<option>가전제품</option>
 					<option>서비스</option>
 					<option>재능기부</option>
-					<option>등등등</option>
+					
 				</select>
 			</td>
 		</tr>

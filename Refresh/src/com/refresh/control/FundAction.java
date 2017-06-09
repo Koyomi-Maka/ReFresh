@@ -18,6 +18,7 @@ public class FundAction extends Action{
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");//요청분석
 		if(action ==null)action="list";
 		FundingDAO dao = new FundingDAO();
@@ -32,7 +33,7 @@ public class FundAction extends Action{
 				break;
 			case "insert" : 
 				
-				request.setCharacterEncoding("UTF-8");
+				
 				String savePath = request.getServletContext().getRealPath("image");
 				
 				
