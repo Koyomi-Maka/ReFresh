@@ -5,6 +5,13 @@
   <typeAlias alias="inves" type="com.refresh.dto.Investor"/>
   <typeAlias alias="busi" type="com.refresh.dto.Business"/>
   <typeAlias alias="fund" type="com.refresh.dto.Funding"/>
+
+<!-- Funding -->
+   <insert parameterClass="fund" id="fundinInsert"> 
+   insert into funding(pnum,pname,pu,category,bname,deadline,fcontent,gmoney,fdate,ceoname,fileName,m_fileFullPath,cmoney)
+          values(funding_seq.nextval,#pname#,#pu#,#category#,#bname#,sysdate+#ddate#,#fcontent#,#gmoney#,sysdate,#ceoname#,#fileName#,#m_fileFullPath#,0)
+   </insert>
+   
    
 <!-- Business -->
   <insert id="businessInsert" parameterClass="busi">
