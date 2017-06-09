@@ -16,11 +16,11 @@
     		flag=nullCheck2();
     	
     	if(!flag){
-  	    	document.frm.action='/Refresh/login/login.do?login='+page;//?login=login1
+  	    	document.frm.action='/Refresh/refresh/login.do?login='+page;//?login=login1
   	    	document.frm.submit();
   	    	
   	    	if(page=='join'){
-  	    		location.href="join.do";
+  	    		location.href="/Refresh/refresh/join.do";
   	    	}
     	}
     
@@ -42,8 +42,8 @@
   			alert('아이디 또는 비밀번호를 입력해주세요');
   			return true;
   		}
-        var vlaue=document.frm.idbnum.value;
-       if(isNaN('value')){//기업회원 로그인 아이디에 숫자가 아닌 다른 문자를 입력했을 때
+        var value=document.frm.idbnum.value;
+       if(isNaN(value)){//기업회원 로그인 아이디에 숫자가 아닌 다른 문자를 입력했을 때
         	alert('아이디에 숫자만 입력해주세요');
           document.frm.idbnum.value="";
           document.frm.idbnum.focus();
@@ -54,10 +54,10 @@
     
     
     function check(){
-    	window.open('/Refresh/refresh/login/confirm.jsp','관리자 로그인','width=300,height=150');
+    	window.open('/Refresh/refresh/confirm.do','관리자 로그인','width=500,height=150');
     }
     function confCheck(){
-        location.href="/Refresh/refresh/mypage/adminPage.jsp";
+        location.href="/Refresh/refresh/mypage/admin.do";
     }
   
   </script>
@@ -66,7 +66,7 @@
 <body>
  <center>
 
-	 <form name="frm" method="post" action="/Refresh/login/login.do"><br><br><br><br>
+	 <form name="frm" method="post" action="/Refresh/refresh/login.do"><br><br><br><br>
 	 <table cellpadding="10">
 	 
 		  <tr>

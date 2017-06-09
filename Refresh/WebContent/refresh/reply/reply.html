@@ -12,7 +12,7 @@
   <script type="text/javascript">
     //댓글 목록 작업: loadReplyList, loadReplyResult
     function loadReplyList(){
-      new ajax.xhr.Request('/Refresh/reply.do?action=list', null,loadReplyResult,'GET');	
+      new ajax.xhr.Request('/Refresh/refresh/reply.do?action=list', null,loadReplyResult,'GET');	
     }//loadReplyList
     
     function loadReplyResult(xhr){
@@ -53,7 +53,7 @@
        var rnum=document.rnum.value;
        
        var params='rname='+rname+'&rcontent='+rcontent+'&rnum='+rnum;	
-     new ajax.xhr.Request('/Refresh/reply.do?action=delete',params,deleteResult,'POST');	
+     new ajax.xhr.Request('/Refresh/refresh/reply.do?action=delete',params,deleteResult,'POST');	
     }//deleteReply
        
     function deleteResult(xhr){
@@ -74,7 +74,7 @@
        var rcontent = document.addForm.rcontent.value;
        
        var params='rname='+rname+'&rcontent='+rcontent;
-       new ajax.xhr.Request('/Refresh/reply.do?action=insert',params,addResult,'POST');
+       new ajax.xhr.Request('/Refresh/refresh/reply.do?action=insert',params,addResult,'POST');
     }//addReply
     
     function addResult(xhr){//콜백

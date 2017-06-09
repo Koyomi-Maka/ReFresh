@@ -27,47 +27,56 @@ public class LoginAction extends Action {
 		System.out.println("Login execute()");
 		//요청분석, 입력데이터 얻기, 모델호출(영역저장), 페이지이동
 		
-		//ActionForm클래스가 존재O : String id = form.getId();
 		LoginActionForm laf = (LoginActionForm) form;
 		
 		String login=laf.getLogin();
 		
-		Investor inve=null;
 		
 		if(login.equals("login1")){//개인회원 로그인
 			String idmail=laf.getIdmail();
 			String ipass=laf.getIpass();
 			//db에서 전체검유효성검사가 끝난 데이터 얻어오기
 			InvestorDAO dao1=new InvestorDAO();
-			//dao1.selectLogin(idmail, ipass);
+			boolean inve=dao1.invesSelectLogin(idmail, ipass);
 			
-		}else{//기업회원 로그인      //숫자열변환을 해야함
+         ActionForward forward;	
+         
+       //로그인 판단  
+    	 if(!inve)//(inve==false)//아이디 존재X 또는 비번 일치X
+    		
+    		 forward = mapping.findForward("fail");
+    	 else {
+    		 HttpSession session = request.getSession();
+    		 session.setAttribute("inve", inve);
+    	     forward = mapping.findForward("success");
+    	 }
+    	
+    	return forward;
+         
+		}else{//기업회원 로그인    
 			int idbnum= Integer.parseInt(laf.getIdbnum());			
 			String bpass=laf.getBpass();
 			
 			BusinessDAO dao2=new BusinessDAO();
-			String busi=(String) dao2.selectLogin(idbnum);
-			//dao2.selectLogin(idbnum,bpass);
+			String busi=dao2.selectLogin(idbnum);	
+			
+			 ActionForward forward;	  
+			 
+		    	//로그인 판단  
+		    	 if(busi==null)//아이디 존재X 또는 비번 일치X
+		    		
+		    		 forward = mapping.findForward("fail");
+		    	 else {
+		    		 HttpSession session = request.getSession();
+		    	  		 session.setAttribute("busi", busi);
+		    		 
+		    		
+		    	     forward = mapping.findForward("success");
+		    	 }
+		    	
+		    	return forward;
+			
 		}
 		
-						
-		ActionForward forward;//ActionForward: 이동할 페이지에 대한 정보를 담는 클래스    	  
-				    	  
-				    	//로그인 판단  
-				    	 if(inve==null)//아이디 존재X 또는 비번 일치X
-				    		
-				    		 forward = mapping.findForward("fail");
-				    	   //ActionMapping mapping: struts-config.xml에 정의(매핑)된 전송페이지 정보
-				    	 else {
-				    		 //영역저장 (사용자 정보) ==> 왜?  이동하는 뷰와 데이터 공유
-				    		 //request.setAttribute("user", user);
-				    		 HttpSession session = request.getSession();
-				    		 session.setAttribute("inve", inve);
-				    		 
-				    		 //성공했다
-				    	     forward = mapping.findForward("success");
-				    	 }
-				    	
-				    	return forward;
-			}
+	}
 }

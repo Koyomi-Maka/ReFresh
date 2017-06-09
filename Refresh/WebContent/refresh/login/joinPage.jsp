@@ -8,9 +8,9 @@
   <script type="text/javascript">
     function movePage2(page2){
     	if(page2=='inve'){
-    		location.href="/Refresh/refresh/investor/investorJoin.jsp";
+    		location.href="/Refresh/refresh/join/inves.do";
     	}else if(page2=='busi'){
-    		location.href="/Refresh/refresh/business/businessJoin.jsp";
+    		location.href="/Refresh/refresh/join/busin.do";
     	}
     }
   </script>
@@ -19,7 +19,7 @@
 <body>
 
  <center>
-    <form method="post" action="join.do"><br><br><br><br>
+    <form method="post" action="/refresh/join.do"><br><br><br><br>
 	 <table cellpadding="10">
 	 
 		 

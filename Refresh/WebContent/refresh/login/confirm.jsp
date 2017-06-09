@@ -23,11 +23,11 @@
 <center>
    <h4>관리자 비밀번호 확인</h4>
   
-  <form name="passForm">
+  <form name="passForm" action="/Refresh/refresh/confirm.do">
   <table cellpadding="5">
     <tr>
     
-      <td><input type="password" name="mpass"></td>
+      <td><input type="password" name="mpass" ></td>
     </tr>
     <tr>
       <td colspan="2" align="center">

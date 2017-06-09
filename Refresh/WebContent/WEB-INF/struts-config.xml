@@ -39,6 +39,11 @@
 <!-- ================================================ Form Bean Definitions -->
 
     <form-beans>
+    <!-- 유효성검사를 위한 ActionForm등록 -->
+
+
+<form-bean type="com.refresh.forms.LoginActionForm" name="loginForm"/>
+    
     <!-- sample form bean descriptor for an ActionForm
         <form-bean
             name="inputForm"
@@ -102,6 +107,7 @@
                
         <action path="/refresh/login" forward=".login"/>
         <action path="/refresh/join" forward=".join"/>
+        <action path="/refresh/confirm" forward="/refresh/login/confirm.jsp"/>
         <action path="/refresh/join/inves" forward=".join_inves"/>
         <action path="/refresh/join/busin" forward=".join_busin"/>
         <action path="/refresh/edit/inves" forward=".edit_inves"/>
@@ -113,7 +119,16 @@
         <action path="/refresh/mypage/inves" forward=".mypage_inves"/>
         <action path="/refresh/mypage/busin" forward=".mypage_busin"/>
 		
-
+        <!-- ajax댓글 -->
+		
+		<action path="/refresh/replyview"
+		        forward="/refresh/reply/replyView.jsp"></action>
+		
+        <action path="/refresh/reply" 
+                type="com.refresh.control.ReplyAction">
+                <forward name="msg" path="/refresh/reply/reply_result.jsp"></forward>
+                <forward name="list" path="/refresh/reply/reply_list.jsp"></forward>
+                </action>
 		
     <!-- sample input and input submit actions
 
