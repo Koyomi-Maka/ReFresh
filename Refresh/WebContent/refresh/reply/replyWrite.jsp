@@ -125,7 +125,7 @@
     	loadReplyList();
     }
   </script>
-</head>
+</head> 
 <!-- reply.html -->
 <body>
   <!-- 댓글 목록 출력(DB에 저장된 값을 화면에 출력) -->

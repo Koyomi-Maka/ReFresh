@@ -44,7 +44,7 @@ public class ReplyAction extends Action{
 		    reply.setRcontent(request.getParameter("rcontent"));
 			
 			
-			  if(dao.insert(reply)){
+			  if(dao.insert(reply)){ 
 				  request.setAttribute("msg", "댓글입력성공");
 			  }else{
 				  request.setAttribute("msg", "댓글입력실패");

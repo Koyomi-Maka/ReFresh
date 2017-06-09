@@ -105,7 +105,7 @@
             
         <action path="/refresh/main" forward=".main"/>
                
-        <action path="/refresh/login" forward=".login"/>
+        <action path="/refresh/login" forward=".login"/> 
         <action path="/refresh/join" forward=".join"/>
         <action path="/refresh/confirm" forward="/refresh/login/confirm.jsp"/>
         <action path="/refresh/join/inves" forward=".join_inves"/>

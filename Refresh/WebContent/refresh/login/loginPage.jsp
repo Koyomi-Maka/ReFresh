@@ -18,7 +18,7 @@
     	if(!flag){
   	    	document.frm.action='/Refresh/refresh/login.do?login='+page;//?login=login1
   	    	document.frm.submit();
-  	    	
+  	    	 
   	    	if(page=='join'){
   	    		location.href="/Refresh/refresh/join.do";
   	    	}
