@@ -18,19 +18,6 @@ public class FundingDAO {
 		smc = MySqlMapClient.getSqlMapInstance();
 	}
 	
-	public boolean insert(Funding fund){
-		try {
-			smc.insert("fundfive.insertFunding",fund);
-			System.out.println("DAO : 입력성공");
-			return true;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
-		return false;
-	}
-	
-	
 	//메인 페이징 작업
 	public List<Funding> selectPageAll(int page,int recordCount){ 
 		List list = null;
@@ -141,5 +128,51 @@ public class FundingDAO {
 	}
 	
 	//main DAO
+	
+	public boolean insert(Funding fund){
+		try {
+			smc.insert("fundfive.insertFunding",fund);
+			System.out.println("DAO : 입력성공");
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		return false;
+	}
+	public boolean update(Funding fund){
+		try {
+			int t = smc.update("fundfive.updateFunding",fund);
+			if(t==1) return true;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	public boolean delete(int no){
+		try {
+			int t = smc.update("fundfive.delete",no);
+			if(t==1) return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	public Funding select(int no){
+		Funding fund=null;
+		try {
+			fund = (Funding)smc.queryForObject("fundfive.select",no);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return fund;
+	}
 	//-------------------------------------------------
 }

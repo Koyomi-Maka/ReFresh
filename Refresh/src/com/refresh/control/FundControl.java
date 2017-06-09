@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.refresh.dao.BusinessDAO;
 import com.refresh.dao.FundingDAO;
@@ -266,9 +267,13 @@ else if(action.equals("investoredit"))
 	else if(action.equals("fundingedit"))
 	{// ÆÝµù¼öÁ¤Æû¿äÃ»
 		FundingDAO fdao = new FundingDAO();
-
 		int pnum = Integer.parseInt(req.getParameter("pnum"));
+		Funding fund= fdao.select(pnum);
+			fund.setPnum(pnum);
 
+			HttpSession session =	req.getSession();
+			session.setAttribute("fund", fund);
+			
 		//Funding funding = fdao.select(pnum);
 	//	req.getSession().setAttribute("funding_update", funding);
 		req.getRequestDispatcher("/refresh/funding/fundingEdit.jsp").forward(req, resp);
