@@ -41,11 +41,11 @@
 </head>
 <body>
 <center>
+ <form action="edit/inves.do?action=edit" method="post">
  <table bgcolor="#009933"  width="380" border="0" align="center" cellpadding="4" cellspacing="5">
   <tbody>
    <tr>
     <td>
-     <form  action="" method="post" name="invesInfo">
       <table bgcolor="#ffffff"  width="360" border="0" align="center" cellpadding="5" cellspacing="6">
        <tbody>
         <tr>
@@ -65,12 +65,11 @@
         </tr>
        </tbody>
       </table>
-     </form>
+
     </td>
    </tr>
    <tr>
     <td>
-     <form action="" method="post">
      <table bgcolor="#ffffff" width="360" border="0" align="center" cellpadding="5" cellspacing="6">
       <tbody>
        <tr>
@@ -90,12 +89,10 @@
         </tr>
      </tbody>
     </table>
-    </form>
    </td>
   </tr>
   <tr>
      <td>
-      <form action="" method="post">
       <table bgcolor="#ffffff" width="360" border="0" align="center" cellpadding="5" cellspacing="6">
        <tbody>
         <tr>
@@ -116,12 +113,10 @@
         </tr>
        </tbody>
       </table>
-      </form>
      </td>
     </tr>
     <tr>
       <td>
-      <form action="" method="post">
       <table bgcolor="#ffffff" width="360" border="0" align="center" cellpadding="5" cellspacing="6">
        <tbody>
          <tr>
@@ -130,11 +125,11 @@
     	</tr>
   	   </tbody>
 	  </table>
-	  </form>
 	 </td>
     </tr>
    </tbody>
   </table>
+ </form>
  </center>
 </body>
 </html>

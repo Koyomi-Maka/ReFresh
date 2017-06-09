@@ -7,12 +7,20 @@
   <typeAlias alias="fund" type="com.refresh.dto.Funding"/>
 
 <!-- Funding -->
-   <insert parameterClass="fund" id="fundinInsert"> 
+   <insert parameterClass="fund" id="fundInsert"> 
    insert into funding(pnum,pname,pu,category,bname,deadline,fcontent,gmoney,fdate,ceoname,fileName,m_fileFullPath,cmoney)
           values(funding_seq.nextval,#pname#,#pu#,#category#,#bname#,sysdate+#ddate#,#fcontent#,#gmoney#,sysdate,#ceoname#,#fileName#,#m_fileFullPath#,0)
    </insert>
    
+   <select id = "fundSelect" parameterClass="int" resultClass="pnum" >
+      select * from funding where pnum=#pnum#
+   </select>
    
+   <update id="funUpdate" parameterClass="fund" >
+		update guest set pname=#pname#,pu=#pu#,category=#category#,bname=#bname#,fcontent=#fcontent#,gmoney=#fcontent#,ceoname=#ceoname#,cmoney
+		where id=#id#
+	</update>
+
 <!-- Business -->
   <insert id="businessInsert" parameterClass="busi">
 		insert into business (bnum, bname, bpass, ceoname, btel, baddr, idbnum, bacc)
