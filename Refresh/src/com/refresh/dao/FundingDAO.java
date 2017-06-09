@@ -131,7 +131,7 @@ public class FundingDAO {
 	
 	public boolean insert(Funding fund){
 		try {
-			smc.insert("fundfive.insertFunding",fund);
+			smc.insert("fundfive.fundInsert",fund);
 			System.out.println("DAO : 입력성공");
 			return true;
 		} catch (SQLException e) {
@@ -142,7 +142,7 @@ public class FundingDAO {
 	}
 	public boolean update(Funding fund){
 		try {
-			int t = smc.update("fundfive.updateFunding",fund);
+			int t = smc.update("refresh.funUpdate",fund);
 			if(t==1) return true;
 			
 		} catch (SQLException e) {
@@ -166,7 +166,7 @@ public class FundingDAO {
 	public Funding select(int no){
 		Funding fund=null;
 		try {
-			fund = (Funding)smc.queryForObject("fundfive.select",no);
+			fund = (Funding)smc.queryForObject("refresh.select",no);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
