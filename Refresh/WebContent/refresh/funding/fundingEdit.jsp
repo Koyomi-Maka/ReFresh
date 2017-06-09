@@ -8,7 +8,7 @@
 
 </head>
 <body>
-<form action="/refresh/fund/edit.do?action=update" method="post">
+<form action="/refresh/fund/edit.do?action=update&pnum=${fund.pnum }" method="post">
 	<center>
 	<input  type="hidden" name = "pnum" value="${fund.pnum }">
 	<table border="1">
@@ -39,7 +39,6 @@
 					<option>가전제품</option>
 					<option>서비스</option>
 					<option>재능기부</option>
-					
 				</select>
 			</td>
 		</tr>
@@ -49,7 +48,7 @@
 		<tr>
 		<td colspan="3">
 			<center>
-				<input type="submit" value="올리기">
+				<input type="submit" value="수정">
 				<input type="reset" value="취소">
 			</center>
 		</td>
