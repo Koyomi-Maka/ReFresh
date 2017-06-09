@@ -8,7 +8,7 @@
   <script type="text/javascript">
   function checkpass(){
 	 var pass = document.passForm.mpass.value;//비밀번호폼에 입력된 패스
-	 var dpass = '7937';
+	 var dpass = '1234';
 	 if(pass==dpass){
 		 opener.confCheck();
 		 window.close();
