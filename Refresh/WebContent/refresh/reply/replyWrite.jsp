@@ -132,7 +132,7 @@
     <div id="replyList"></div>
     
   <!-- 댓글 입력폼 -->
-    <div id="replyAdd" style="background-color: skyblue; " >
+    <div id="replyAdd" >
      <form name="addForm">
      <br>
          <input type="text" name="rname" size="10" placeholder="이름"><br>

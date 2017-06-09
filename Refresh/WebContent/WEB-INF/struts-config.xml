@@ -103,9 +103,13 @@
        		<forward name="success" path="/Refresh/refresh/business/bIdCheck.jsp"/>
        	</action>   
             
-        <action path="/refresh/main" forward=".main"/>
+        <action path="/refresh/main" forward=".main" />
                
-        <action path="/refresh/login" forward=".login"/> 
+        <action path="/refresh/login" forward=".login" type="com.refresh.control.LoginAction" 
+                name="loginForm" scope="request" validate="true" input="/refresh/login/loginPage.jsp">
+                <forward name="success" path=".main" />
+		        <forward name="fail" path=".login"/>
+        </action>
         <action path="/refresh/join" forward=".join"/>
         <action path="/refresh/confirm" forward="/refresh/login/confirm.jsp"/>
         <action path="/refresh/join/inves" forward=".join_inves"/>
